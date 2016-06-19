@@ -1,0 +1,60 @@
+{
+  "name": "remark-rehype",
+  "version": "0.0.0",
+  "description": "rehype support for remark",
+  "license": "MIT",
+  "keywords": [
+    "remark",
+    "rehype",
+    "mdast",
+    "hast"
+  ],
+  "files": [
+    "index.js"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wooorm/remark-rehype.git"
+  },
+  "bugs": "https://github.com/wooorm/remark-rehype/issues",
+  "author": "Titus Wormer <tituswormer@gmail.com> (http://wooorm.com)",
+  "contributors": [
+    "Titus Wormer <tituswormer@gmail.com> (http://wooorm.com)"
+  ],
+  "dependencies": {
+    "mdast-util-to-hast": "^1.0.0"
+  },
+  "devDependencies": {
+    "browserify": "^13.0.1",
+    "eslint": "^2.0.0",
+    "esmangle": "^1.0.1",
+    "istanbul": "^0.4.0",
+    "jscs": "^3.0.0",
+    "jscs-jsdoc": "^2.0.0",
+    "rehype-highlight": "^1.0.0",
+    "rehype-stringify": "^1.0.0",
+    "remark-cli": "^1.0.0",
+    "remark-comment-config": "^4.0.0",
+    "remark-github": "^5.0.0",
+    "remark-lint": "^4.0.0",
+    "remark-parse": "^1.0.0",
+    "remark-stringify": "^1.0.0",
+    "remark-validate-links": "^4.0.0",
+    "tape": "^4.0.0",
+    "unified": "^4.1.2",
+    "unist-util-inspect": "^4.0.0",
+    "vfile-reporter": "^1.5.0"
+  },
+  "scripts": {
+    "build-md": "remark . --quiet --frail",
+    "build-bundle": "browserify index.js --bare -s remarkRehype > remark-rehype.js",
+    "build-mangle": "esmangle remark-rehype.js > remark-rehype.min.js",
+    "build": "npm run build-md && npm run build-bundle && npm run build-mangle",
+    "lint-api": "eslint .",
+    "lint-style": "jscs --reporter inline .",
+    "lint": "npm run lint-api && npm run lint-style",
+    "test-api": "node test.js",
+    "test-coverage": "istanbul cover test.js",
+    "test": "npm run build && npm run lint && npm run test-coverage"
+  }
+}
