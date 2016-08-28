@@ -14,54 +14,46 @@ npm install remark-rehype
 
 ## Usage
 
-```javascript
-        var unified = require('unified');
-        var parse = require('remark-parse');
-        var lint = require('remark-lint');
-        var remark2rehype = require('remark-rehype');
-        var highlight = require('rehype-highlight');
-        var stringify = require('rehype-stringify');
-        var report = require('vfile-reporter');
+```js
+var unified = require('unified');
+var parse = require('remark-parse');
+var remark2rehype = require('remark-rehype');
+var highlight = require('rehype-highlight');
+var stringify = require('rehype-stringify');
+var report = require('vfile-reporter');
 
-        unified()
-            .use(parse)
-            .use(lint)
-            .use(remark2rehype)
-            .use(highlight)
-            .use(stringify)
-            .process([
-                '## Hello, world!',
-                '',
-                '~~~js',
-                'var name = "World";',
-                'console.log("Hello, " + name + "!");',
-                '~~~',
-                ''
-            ].join('\n'), function (err, file) {
-                file.filename = 'example';
-                file.extension = 'md';
-                process.stdout.write(file + '\n');
-                process.stderr.write(report(file) + '\n');
-            });
+unified()
+  .use(parse)
+  .use(remark2rehype)
+  .use(highlight)
+  .use(stringify)
+  .process([
+    '## Hello, world!',
+    '',
+    '    "use strict"',
+    '    var name = "World";',
+    '    console.log("Hello, " + name + "!");',
+    ''
+  ].join('\n'), function (err, file) {
+    console.error(report(err || file));
+    console.log(String(file));
+  });
+```
+
+**stderr**(4) yields:
+
+```txt
+no issues found
 ```
 
 **stdout**(4) yields:
 
 ```html
 <h2>Hello, world!</h2>
-<pre><code class="hljs language-js"><span class="hljs-keyword">var</span> name = <span class="hljs-string">&#x22;World&#x22;</span>;
-<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x22;Hello, &#x22;</span> + name + <span class="hljs-string">&#x22;!&#x22;</span>);
+<pre><code class="hljs language-javascript"><span class="hljs-meta">"use strict"</span>
+<span class="hljs-keyword">var</span> name = <span class="hljs-string">"World"</span>;
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Hello, "</span> + name + <span class="hljs-string">"!"</span>);
 </code></pre>
-```
-
-**stderr**(4) yields:
-
-```txt
-example.md
-     1-1:17  warning  First heading level should be `1`     first-heading-level
-     1-1:17  warning  Don’t add a trailing `!` to headings  no-heading-punctuation
-
-⚠ 2 warnings
 ```
 
 ## API
