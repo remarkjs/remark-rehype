@@ -1,7 +1,5 @@
 # remark-rehype [![Build Status][travis-badge]][travis] [![Coverage Status][codecov-badge]][codecov]
 
-<!--lint disable heading-increment list-item-spacing-->
-
 Bridge / mutate from [**remark**][remark] to [**rehype**][rehype].
 
 ## Installation
@@ -58,7 +56,7 @@ no issues found
 
 ## API
 
-### `origin.use(remark2rehype[, destination])`
+### `origin.use(remark2rehype[, destination][, options])`
 
 Either bridge or mutate from [**remark**][remark] ([MDAST][]) to
 [**rehype**][rehype] ([HAST][]).
@@ -70,6 +68,10 @@ with the new HAST tree, then, after running discards that tree and
 continues on running the origin processor with the original tree
 ([bridge-mode][bridge]).  Otherwise, passes the tree to further
 plug-ins (mutate-mode).
+
+###### `options`
+
+`options` are passed through to [`mdast-util-to-hast`][to-hast], if given.
 
 ## License
 
@@ -102,3 +104,5 @@ plug-ins (mutate-mode).
 [processor]: https://github.com/wooorm/unified#processor
 
 [bridge]: https://github.com/wooorm/unified#bridge
+
+[to-hast]: https://github.com/wooorm/mdast-util-to-hast#tohastnode-options
