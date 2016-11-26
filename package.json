@@ -16,7 +16,7 @@
     "Titus Wormer <tituswormer@gmail.com> (http://wooorm.com)"
   ],
   "dependencies": {
-    "mdast-util-to-hast": "^1.0.0"
+    "mdast-util-to-hast": "^2.1.1"
   },
   "files": [
     "index.js"
