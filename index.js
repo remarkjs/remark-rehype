@@ -1,17 +1,7 @@
-/**
- * @author Titus Wormer
- * @copyright 2015 Titus Wormer
- * @license MIT
- * @module remark:rehype
- * @fileoverview Bridge / mutate from remark to rehype.
- */
-
 'use strict';
 
-/* Dependencies */
 var mdast2hast = require('mdast-util-to-hast');
 
-/* Expose. */
 module.exports = attacher;
 
 /* Attacher.
