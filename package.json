@@ -22,7 +22,7 @@
     "index.js"
   ],
   "devDependencies": {
-    "browserify": "^13.0.1",
+    "browserify": "^14.1.0",
     "esmangle": "^1.0.1",
     "nyc": "^10.0.0",
     "rehype-stringify": "^2.0.0",
