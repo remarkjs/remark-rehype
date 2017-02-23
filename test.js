@@ -13,7 +13,7 @@ test('remark2rehype()', function (t) {
       .use(parse)
       .use(remark2rehype)
       .use(html)
-      .process('## Hello, world! ##')
+      .processSync('## Hello, world! ##')
       .toString(),
     '<h2>Hello, world!</h2>',
     'should mutate'
@@ -24,7 +24,7 @@ test('remark2rehype()', function (t) {
       .use(parse)
       .use(remark2rehype, {allowDangerousHTML: true})
       .use(html, {allowDangerousHTML: true})
-      .process('## Hello, <i>world</i>! ##')
+      .processSync('## Hello, <i>world</i>! ##')
       .toString(),
     '<h2>Hello, <i>world</i>!</h2>',
     'should mutate with options'
@@ -35,7 +35,7 @@ test('remark2rehype()', function (t) {
       .use(parse)
       .use(remark2rehype, unified())
       .use(markdown)
-      .process('## Hello, world! ##')
+      .processSync('## Hello, world! ##')
       .toString(),
     '## Hello, world!\n',
     'should bridge'
@@ -46,7 +46,7 @@ test('remark2rehype()', function (t) {
       .use(parse)
       .use(remark2rehype, unified(), {allowDangerousHTML: true})
       .use(markdown)
-      .process('## Hello, <i>world</i>! ##')
+      .processSync('## Hello, <i>world</i>! ##')
       .toString(),
     '## Hello, <i>world</i>!\n',
     'should bridge with options'
