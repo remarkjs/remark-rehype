@@ -1,6 +1,6 @@
 {
   "name": "remark-rehype",
-  "version": "1.3.0",
+  "version": "2.0.0",
   "description": "rehype support for remark",
   "license": "MIT",
   "keywords": [
