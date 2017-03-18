@@ -32,7 +32,7 @@
     "remark-stringify": "^3.0.0",
     "tape": "^4.0.0",
     "unified": "^6.0.0",
-    "xo": "^0.17.1"
+    "xo": "^0.18.0"
   },
   "scripts": {
     "build-md": "remark . -qfo",
@@ -52,6 +52,7 @@
   },
   "xo": {
     "space": true,
+    "esnext": false,
     "ignores": [
       "remark-rehype.js"
     ]
