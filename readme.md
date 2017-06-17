@@ -86,6 +86,15 @@ plug-ins (mutate-mode).
 
 `options` are passed through to [`mdast-util-to-hast`][to-hast], if given.
 
+## Related
+
+*   [`rehype-remark`](https://github.com/wooorm/rehype-remark)
+    — Transform HTML to markdown
+*   [`rehype-retext`](https://github.com/wooorm/rehype-retext)
+    — Transform HTML to [NLCST][]
+*   [`remark-retext`](https://github.com/wooorm/remark-retext)
+    — Transform markdown to [NLCST][]
+
 ## License
 
 [MIT][license] © [Titus Wormer][author]
@@ -119,3 +128,5 @@ plug-ins (mutate-mode).
 [bridge]: https://github.com/wooorm/unified#bridge
 
 [to-hast]: https://github.com/wooorm/mdast-util-to-hast#tohastnode-options
+
+[nlcst]: https://github.com/syntax-tree/nlcst
