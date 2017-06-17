@@ -2,14 +2,14 @@
 
 var mdast2hast = require('mdast-util-to-hast');
 
-module.exports = attacher;
+module.exports = remark2rehype;
 
 /* Attacher.
  * If a destination is given, runs the destination with
  * the new HAST tree (bridge-mode).
  * Without destination, returns the HAST tree: further
  * plug-ins run on that tree (mutate-mode). */
-function attacher(destination, options) {
+function remark2rehype(destination, options) {
   if (destination && !destination.process) {
     options = destination;
     destination = null;
