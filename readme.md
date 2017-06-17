@@ -12,46 +12,59 @@ npm install remark-rehype
 
 ## Usage
 
-```js
-var unified = require('unified');
-var parse = require('remark-parse');
-var remark2rehype = require('remark-rehype');
-var highlight = require('rehype-highlight');
-var stringify = require('rehype-stringify');
+Say we have the following file, `example.md`:
+
+```markdown
+# Hello world
+
+> Block quote.
+
+Some _emphasis_, **importance**, and `code`.
+```
+
+And our script, `example.js`, looks as follows:
+
+```javascript
+var vfile = require('to-vfile');
 var report = require('vfile-reporter');
+var unified = require('unified');
+var markdown = require('remark-parse');
+var remark2rehype = require('remark-rehype');
+var doc = require('rehype-document');
+var format = require('rehype-format');
+var html = require('rehype-stringify');
 
 unified()
-  .use(parse)
+  .use(markdown)
   .use(remark2rehype)
-  .use(highlight)
-  .use(stringify)
-  .process([
-    '## Hello, world!',
-    '',
-    '    "use strict"',
-    '    var name = "World";',
-    '    console.log("Hello, " + name + "!");',
-    ''
-  ].join('\n'), function (err, file) {
+  .use(doc)
+  .use(format)
+  .use(html)
+  .process(vfile.readSync('example.md'), function (err, file) {
     console.error(report(err || file));
     console.log(String(file));
   });
 ```
 
-**stderr**(4) yields:
-
-```txt
-no issues found
-```
-
-**stdout**(4) yields:
+Now, running `node example` yields:
 
 ```html
-<h2>Hello, world!</h2>
-<pre><code class="hljs language-javascript"><span class="hljs-meta">"use strict"</span>
-<span class="hljs-keyword">var</span> name = <span class="hljs-string">"World"</span>;
-<span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Hello, "</span> + name + <span class="hljs-string">"!"</span>);
-</code></pre>
+example.md: no issues found
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>example</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <h1>Hello world</h1>
+    <blockquote>
+      <p>Block quote.</p>
+    </blockquote>
+    <p>Some <em>emphasis</em>, <strong>importance</strong>, and <code>code</code>.</p>
+  </body>
+</html>
 ```
 
 ## API
