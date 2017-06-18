@@ -2,6 +2,9 @@
 
 Bridge / mutate from [**remark**][remark] to [**rehype**][rehype].
 
+> Note that `remark-rehype` doesn’t deal with HTML inside the markdown.  You’ll
+> need [`rehype-raw`][raw] if you’re planning on doing that.
+
 ## Installation
 
 [npm][npm-install]:
@@ -88,6 +91,8 @@ plug-ins (mutate-mode).
 
 ## Related
 
+*   [`rehype-raw`][raw]
+    — Properly deal with HTML in markdown (used after `remark-rehype`)
 *   [`rehype-remark`](https://github.com/wooorm/rehype-remark)
     — Transform HTML to markdown
 *   [`rehype-retext`](https://github.com/wooorm/rehype-retext)
@@ -130,3 +135,5 @@ plug-ins (mutate-mode).
 [to-hast]: https://github.com/wooorm/mdast-util-to-hast#tohastnode-options
 
 [nlcst]: https://github.com/syntax-tree/nlcst
+
+[raw]: https://github.com/wooorm/rehype-raw
