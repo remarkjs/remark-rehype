@@ -100,6 +100,13 @@ plug-ins (mutate-mode).
 *   [`remark-retext`](https://github.com/remarkjs/remark-retext)
     — Transform markdown to [NLCST][]
 
+## Contribute
+
+See [`contribute.md` in `remarkjs/remarkj`][contribute] for ways to get started.
+
+This organisation has a [Code of Conduct][coc].  By interacting with this
+repository, organisation, or community you agree to abide by its terms.
+
 ## License
 
 [MIT][license] © [Titus Wormer][author]
@@ -137,3 +144,7 @@ plug-ins (mutate-mode).
 [nlcst]: https://github.com/syntax-tree/nlcst
 
 [raw]: https://github.com/rehypejs/rehype-raw
+
+[contribute]: https://github.com/remarkjs/remark/blob/master/contributing.md
+
+[coc]: https://github.com/remarkjs/remark/blob/master/code-of-conduct.md
