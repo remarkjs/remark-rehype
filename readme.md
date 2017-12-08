@@ -93,11 +93,11 @@ plug-ins (mutate-mode).
 
 *   [`rehype-raw`][raw]
     — Properly deal with HTML in markdown (used after `remark-rehype`)
-*   [`rehype-remark`](https://github.com/wooorm/rehype-remark)
+*   [`rehype-remark`](https://github.com/rehypejs/rehype-remark)
     — Transform HTML to markdown
-*   [`rehype-retext`](https://github.com/wooorm/rehype-retext)
+*   [`rehype-retext`](https://github.com/rehypejs/rehype-retext)
     — Transform HTML to [NLCST][]
-*   [`remark-retext`](https://github.com/wooorm/remark-retext)
+*   [`remark-retext`](https://github.com/remarkjs/remark-retext)
     — Transform markdown to [NLCST][]
 
 ## License
@@ -106,13 +106,13 @@ plug-ins (mutate-mode).
 
 <!-- Definitions -->
 
-[travis-badge]: https://img.shields.io/travis/wooorm/remark-rehype.svg
+[travis-badge]: https://img.shields.io/travis/remarkjs/remark-rehype.svg
 
-[travis]: https://travis-ci.org/wooorm/remark-rehype
+[travis]: https://travis-ci.org/remarkjs/remark-rehype
 
-[codecov-badge]: https://img.shields.io/codecov/c/github/wooorm/remark-rehype.svg
+[codecov-badge]: https://img.shields.io/codecov/c/github/remarkjs/remark-rehype.svg
 
-[codecov]: https://codecov.io/github/wooorm/remark-rehype
+[codecov]: https://codecov.io/github/remarkjs/remark-rehype
 
 [npm-install]: https://docs.npmjs.com/cli/install
 
@@ -120,20 +120,20 @@ plug-ins (mutate-mode).
 
 [author]: http://wooorm.com
 
-[mdast]: https://github.com/wooorm/mdast
+[mdast]: https://github.com/syntax-tree/mdast
 
-[hast]: https://github.com/wooorm/hast
+[hast]: https://github.com/syntax-tree/hast
 
-[remark]: https://github.com/wooorm/remark
+[remark]: https://github.com/remarkjs/remark
 
-[rehype]: https://github.com/wooorm/rehype
+[rehype]: https://github.com/rehypejs/rehype
 
-[processor]: https://github.com/wooorm/unified#processor
+[processor]: https://github.com/unifiedjs/unified#processor
 
-[bridge]: https://github.com/wooorm/unified#bridge
+[bridge]: https://github.com/unifiedjs/unified#processing-between-syntaxes
 
-[to-hast]: https://github.com/wooorm/mdast-util-to-hast#tohastnode-options
+[to-hast]: https://github.com/syntax-tree/mdast-util-to-hast#tohastnode-options
 
 [nlcst]: https://github.com/syntax-tree/nlcst
 
-[raw]: https://github.com/wooorm/rehype-raw
+[raw]: https://github.com/rehypejs/rehype-raw

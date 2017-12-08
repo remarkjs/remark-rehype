@@ -9,8 +9,8 @@
     "mdast",
     "hast"
   ],
-  "repository": "https://github.com/wooorm/remark-rehype",
-  "bugs": "https://github.com/wooorm/remark-rehype/issues",
+  "repository": "remarkjs/remark-rehype",
+  "bugs": "https://github.com/remarkjs/remark-rehype/issues",
   "author": "Titus Wormer <tituswormer@gmail.com> (http://wooorm.com)",
   "contributors": [
     "Titus Wormer <tituswormer@gmail.com> (http://wooorm.com)"
@@ -58,6 +58,8 @@
     ]
   },
   "remarkConfig": {
-    "plugins": ["preset-wooorm"]
+    "plugins": [
+      "preset-wooorm"
+    ]
   }
 }
