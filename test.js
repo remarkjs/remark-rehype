@@ -5,7 +5,7 @@ var unified = require('unified');
 var parse = require('remark-parse');
 var markdown = require('remark-stringify');
 var html = require('rehype-stringify');
-var remark2rehype = require('./index.js');
+var remark2rehype = require('.');
 
 test('remark2rehype()', function (t) {
   t.equal(
