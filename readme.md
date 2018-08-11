@@ -28,14 +28,14 @@ Some _emphasis_, **importance**, and `code`.
 And our script, `example.js`, looks as follows:
 
 ```javascript
-var vfile = require('to-vfile');
-var report = require('vfile-reporter');
-var unified = require('unified');
-var markdown = require('remark-parse');
-var remark2rehype = require('remark-rehype');
-var doc = require('rehype-document');
-var format = require('rehype-format');
-var html = require('rehype-stringify');
+var vfile = require('to-vfile')
+var report = require('vfile-reporter')
+var unified = require('unified')
+var markdown = require('remark-parse')
+var remark2rehype = require('remark-rehype')
+var doc = require('rehype-document')
+var format = require('rehype-format')
+var html = require('rehype-stringify')
 
 unified()
   .use(markdown)
@@ -43,10 +43,10 @@ unified()
   .use(doc)
   .use(format)
   .use(html)
-  .process(vfile.readSync('example.md'), function (err, file) {
-    console.error(report(err || file));
-    console.log(String(file));
-  });
+  .process(vfile.readSync('example.md'), function(err, file) {
+    console.error(report(err || file))
+    console.log(String(file))
+  })
 ```
 
 Now, running `node example` yields:

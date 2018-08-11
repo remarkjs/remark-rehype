@@ -1,13 +1,13 @@
-'use strict';
+'use strict'
 
-var test = require('tape');
-var unified = require('unified');
-var parse = require('remark-parse');
-var markdown = require('remark-stringify');
-var html = require('rehype-stringify');
-var remark2rehype = require('.');
+var test = require('tape')
+var unified = require('unified')
+var parse = require('remark-parse')
+var markdown = require('remark-stringify')
+var html = require('rehype-stringify')
+var remark2rehype = require('.')
 
-test('remark2rehype()', function (t) {
+test('remark2rehype()', function(t) {
   t.equal(
     unified()
       .use(parse)
@@ -17,7 +17,7 @@ test('remark2rehype()', function (t) {
       .toString(),
     '<h2>Hello, world!</h2>',
     'should mutate'
-  );
+  )
 
   t.equal(
     unified()
@@ -28,7 +28,7 @@ test('remark2rehype()', function (t) {
       .toString(),
     '<h2>Hello, <i>world</i>!</h2>',
     'should mutate with options'
-  );
+  )
 
   t.equal(
     unified()
@@ -39,7 +39,7 @@ test('remark2rehype()', function (t) {
       .toString(),
     '## Hello, world!\n',
     'should bridge'
-  );
+  )
 
   t.equal(
     unified()
@@ -50,7 +50,7 @@ test('remark2rehype()', function (t) {
       .toString(),
     '## Hello, <i>world</i>!\n',
     'should bridge with options'
-  );
+  )
 
-  t.end();
-});
+  t.end()
+})
