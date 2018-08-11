@@ -5,3 +5,4 @@ coverage/
 node_modules/
 remark-rehype.js
 remark-rehype.min.js
+yarn.lock
