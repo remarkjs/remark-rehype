@@ -1,4 +1,11 @@
-# remark-rehype [![Build Status][travis-badge]][travis] [![Coverage Status][codecov-badge]][codecov]
+# remark-rehype
+
+[![Build][build-badge]][build]
+[![Coverage][coverage-badge]][coverage]
+[![Downloads][downloads-badge]][downloads]
+[![Chat][chat-badge]][chat]
+[![Sponsors][sponsors-badge]][collective]
+[![Backers][backers-badge]][collective]
 
 Bridge / mutate from [**remark**][remark] to [**rehype**][rehype].
 
@@ -114,13 +121,27 @@ repository, organisation, or community you agree to abide by its terms.
 
 <!-- Definitions -->
 
-[travis-badge]: https://img.shields.io/travis/remarkjs/remark-rehype.svg
+[build-badge]: https://img.shields.io/travis/remarkjs/remark-rehype.svg
 
-[travis]: https://travis-ci.org/remarkjs/remark-rehype
+[build]: https://travis-ci.org/remarkjs/remark-rehype
 
-[codecov-badge]: https://img.shields.io/codecov/c/github/remarkjs/remark-rehype.svg
+[coverage-badge]: https://img.shields.io/codecov/c/github/remarkjs/remark-rehype.svg
 
-[codecov]: https://codecov.io/github/remarkjs/remark-rehype
+[coverage]: https://codecov.io/github/remarkjs/remark-rehype
+
+[downloads-badge]: https://img.shields.io/npm/dm/remark-rehype.svg
+
+[downloads]: https://www.npmjs.com/package/remark-rehype
+
+[chat-badge]: https://img.shields.io/badge/join%20the%20community-on%20spectrum-7b16ff.svg
+
+[chat]: https://spectrum.chat/unified/remark
+
+[sponsors-badge]: https://opencollective.com/unified/sponsors/badge.svg
+
+[backers-badge]: https://opencollective.com/unified/backers/badge.svg
+
+[collective]: https://opencollective.com/unified
 
 [npm-install]: https://docs.npmjs.com/cli/install
 
