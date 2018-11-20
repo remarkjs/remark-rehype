@@ -11,9 +11,9 @@
   ],
   "repository": "remarkjs/remark-rehype",
   "bugs": "https://github.com/remarkjs/remark-rehype/issues",
-  "author": "Titus Wormer <tituswormer@gmail.com> (http://wooorm.com)",
+  "author": "Titus Wormer <tituswormer@gmail.com> (https://wooorm.com)",
   "contributors": [
-    "Titus Wormer <tituswormer@gmail.com> (http://wooorm.com)"
+    "Titus Wormer <tituswormer@gmail.com> (https://wooorm.com)"
   ],
   "dependencies": {
     "mdast-util-to-hast": "^3.0.0"
