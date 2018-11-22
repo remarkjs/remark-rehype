@@ -15,12 +15,12 @@
   "contributors": [
     "Titus Wormer <tituswormer@gmail.com> (https://wooorm.com)"
   ],
-  "dependencies": {
-    "mdast-util-to-hast": "^3.0.0"
-  },
   "files": [
     "index.js"
   ],
+  "dependencies": {
+    "mdast-util-to-hast": "^4.0.0"
+  },
   "devDependencies": {
     "browserify": "^16.0.0",
     "nyc": "^13.0.0",
