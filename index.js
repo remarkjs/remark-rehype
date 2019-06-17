@@ -4,9 +4,11 @@ var mdast2hast = require('mdast-util-to-hast')
 
 module.exports = remark2rehype
 
-// Attacher.  If a destination is given, runs the destination with the new hast
-// tree (bridge-mode).   Without destination, returns the hast tree: further
-// plugins run on that tree (mutate-mode).
+// Attacher.
+// If a destination is given, runs the destination with the new hast tree
+// (bridge mode).
+// Without destination, returns the tree: further plugins run on that tree
+// (mutate mode).
 function remark2rehype(destination, options) {
   if (destination && !destination.process) {
     options = destination
@@ -16,7 +18,8 @@ function remark2rehype(destination, options) {
   return destination ? bridge(destination, options) : mutate(options)
 }
 
-// Bridge-mode.  Runs the destination with the new hast tree.
+// Bridge mode.
+// Runs the destination with the new hast tree.
 function bridge(destination, options) {
   return transformer
 
@@ -29,7 +32,8 @@ function bridge(destination, options) {
   }
 }
 
-// Mutate-mode.  Further transformers run on the hast tree.
+// Mutate-mode.
+// Further transformers run on the hast tree.
 function mutate(options) {
   return transformer
 
