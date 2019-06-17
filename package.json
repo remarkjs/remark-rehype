@@ -1,19 +1,24 @@
 {
   "name": "remark-rehype",
   "version": "4.0.0",
-  "description": "rehype support for remark",
+  "description": "remark plugin to transform to rehype",
   "license": "MIT",
   "keywords": [
+    "unified",
     "remark",
     "rehype",
+    "plugin",
+    "html",
+    "hast",
     "mdast",
-    "hast"
+    "markdown"
   ],
   "repository": "remarkjs/remark-rehype",
   "bugs": "https://github.com/remarkjs/remark-rehype/issues",
   "author": "Titus Wormer <tituswormer@gmail.com> (https://wooorm.com)",
   "contributors": [
-    "Titus Wormer <tituswormer@gmail.com> (https://wooorm.com)"
+    "Titus Wormer <tituswormer@gmail.com> (https://wooorm.com)",
+    "John Otander <johnotander@gmail.com> (https://johno.com)"
   ],
   "files": [
     "index.js"
