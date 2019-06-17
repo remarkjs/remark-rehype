@@ -3,24 +3,25 @@
 [![Build][build-badge]][build]
 [![Coverage][coverage-badge]][coverage]
 [![Downloads][downloads-badge]][downloads]
-[![Chat][chat-badge]][chat]
+[![Size][size-badge]][size]
 [![Sponsors][sponsors-badge]][collective]
 [![Backers][backers-badge]][collective]
+[![Chat][chat-badge]][chat]
 
-Bridge / mutate from [**remark**][remark] to [**rehype**][rehype].
+[**remark**][remark] plugin to bridge or mutate to [**rehype**][rehype].
 
-> Note that `remark-rehype` doesn’t deal with HTML inside the markdown.  You’ll
-> need [`rehype-raw`][raw] if you’re planning on doing that.
+> Note: `remark-rehype` doesn’t deal with HTML inside the Markdown.
+> You’ll need [`rehype-raw`][raw] if you’re planning on doing that.
 
-## Installation
+## Install
 
-[npm][npm-install]:
+[npm][]:
 
-```bash
+```sh
 npm install remark-rehype
 ```
 
-## Usage
+## Use
 
 Say we have the following file, `example.md`:
 
@@ -34,7 +35,7 @@ Some _emphasis_, **importance**, and `code`.
 
 And our script, `example.js`, looks as follows:
 
-```javascript
+```js
 var vfile = require('to-vfile')
 var report = require('vfile-reporter')
 var unified = require('unified')
@@ -81,39 +82,40 @@ example.md: no issues found
 
 ### `origin.use(remark2rehype[, destination][, options])`
 
-Either bridge or mutate from [**remark**][remark] ([MDAST][]) to
-[**rehype**][rehype] ([HAST][]).
+[**remark**][remark] ([**mdast**][mdast]) plugin to bridge or mutate to
+[**rehype**][rehype] ([**hast**][hast]).
 
 ###### `destination`
 
-If given ([`Unified`][processor]), runs the destination processor
-with the new HAST tree, then, after running discards that tree and
-continues on running the origin processor with the original tree
-([bridge-mode][bridge]).  Otherwise, passes the tree to further
-plug-ins (mutate-mode).
+If a [`Unified`][processor] processor is given, runs the destination processor
+with the new hast tree, then, after running discards that tree and continues on
+running the origin processor with the original tree ([*bridge mode*][bridge]).
+Otherwise, passes the tree to further plugins (*mutate mode*).
 
 ###### `options`
 
-`options` are passed through to [`mdast-util-to-hast`][to-hast], if given.
+Passed to [`mdast-util-to-hast`][to-hast].
 
 ## Related
 
 *   [`rehype-raw`][raw]
-    — Properly deal with HTML in markdown (used after `remark-rehype`)
+    — Properly deal with HTML in Markdown (used after `remark-rehype`)
 *   [`rehype-remark`](https://github.com/rehypejs/rehype-remark)
-    — Transform HTML to markdown
+    — Transform HTML ([hast][]) to Markdown ([mdast][])
 *   [`rehype-retext`](https://github.com/rehypejs/rehype-retext)
-    — Transform HTML to [NLCST][]
+    — Transform HTML ([hast][]) to natural language ([nlcst][])
 *   [`remark-retext`](https://github.com/remarkjs/remark-retext)
-    — Transform markdown to [NLCST][]
+    — Transform Markdown ([mdast][]) to natural language ([nlcst][])
 
 ## Contribute
 
-See [`contributing.md` in `remarkjs/remark`][contributing] for ways to get
-started.
+See [`contributing.md`][contributing] in [`remarkjs/.github`][health] for ways
+to get started.
+See [`support.md`][support] for ways to get help.
 
-This organisation has a [Code of Conduct][coc].  By interacting with this
-repository, organisation, or community you agree to abide by its terms.
+This project has a [Code of Conduct][coc].
+By interacting with this repository, organisation, or community you agree to
+abide by its terms.
 
 ## License
 
@@ -121,7 +123,7 @@ repository, organisation, or community you agree to abide by its terms.
 
 <!-- Definitions -->
 
-[build-badge]: https://img.shields.io/travis/remarkjs/remark-rehype.svg
+[build-badge]: https://img.shields.io/travis/remarkjs/remark-rehype/master.svg
 
 [build]: https://travis-ci.org/remarkjs/remark-rehype
 
@@ -133,9 +135,9 @@ repository, organisation, or community you agree to abide by its terms.
 
 [downloads]: https://www.npmjs.com/package/remark-rehype
 
-[chat-badge]: https://img.shields.io/badge/join%20the%20community-on%20spectrum-7b16ff.svg
+[size-badge]: https://img.shields.io/bundlephobia/minzip/remark-rehype.svg
 
-[chat]: https://spectrum.chat/unified/remark
+[size]: https://bundlephobia.com/result?p=remark-rehype
 
 [sponsors-badge]: https://opencollective.com/unified/sponsors/badge.svg
 
@@ -143,30 +145,38 @@ repository, organisation, or community you agree to abide by its terms.
 
 [collective]: https://opencollective.com/unified
 
-[npm-install]: https://docs.npmjs.com/cli/install
+[chat-badge]: https://img.shields.io/badge/join%20the%20community-on%20spectrum-7b16ff.svg
+
+[chat]: https://spectrum.chat/unified/remark
+
+[npm]: https://docs.npmjs.com/cli/install
+
+[health]: https://github.com/remarkjs/.github
+
+[contributing]: https://github.com/remarkjs/.github/blob/master/contributing.md
+
+[support]: https://github.com/remarkjs/.github/blob/master/support.md
+
+[coc]: https://github.com/remarkjs/.github/blob/master/code-of-conduct.md
 
 [license]: license
 
 [author]: https://wooorm.com
 
-[mdast]: https://github.com/syntax-tree/mdast
+[processor]: https://github.com/unifiedjs/unified#processor
 
-[hast]: https://github.com/syntax-tree/hast
+[bridge]: https://github.com/unifiedjs/unified#processing-between-syntaxes
 
 [remark]: https://github.com/remarkjs/remark
 
 [rehype]: https://github.com/rehypejs/rehype
 
-[processor]: https://github.com/unifiedjs/unified#processor
+[raw]: https://github.com/rehypejs/rehype-raw
 
-[bridge]: https://github.com/unifiedjs/unified#processing-between-syntaxes
+[mdast]: https://github.com/syntax-tree/mdast
 
-[to-hast]: https://github.com/syntax-tree/mdast-util-to-hast#tohastnode-options
+[hast]: https://github.com/syntax-tree/hast
 
 [nlcst]: https://github.com/syntax-tree/nlcst
 
-[raw]: https://github.com/rehypejs/rehype-raw
-
-[contributing]: https://github.com/remarkjs/remark/blob/master/contributing.md
-
-[coc]: https://github.com/remarkjs/remark/blob/master/code-of-conduct.md
+[to-hast]: https://github.com/syntax-tree/mdast-util-to-hast#tohastnode-options
