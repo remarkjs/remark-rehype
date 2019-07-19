@@ -37,7 +37,7 @@
     "remark-stringify": "^6.0.0",
     "tape": "^4.0.0",
     "tinyify": "^2.0.0",
-    "unified": "^7.0.0",
+    "unified": "^8.0.0",
     "xo": "^0.24.0"
   },
   "scripts": {
