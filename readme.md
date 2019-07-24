@@ -96,10 +96,20 @@ Otherwise, passes the tree to further plugins (*mutate mode*).
 
 Passed to [`mdast-util-to-hast`][to-hast].
 
+## Security
+
+Use of `remark-react` can open you up to a [cross-site scripting (XSS)][xss]
+attack.
+Embedded [**hast**][hast] properties (`hName`, `hProperties`, `hChildren`),
+custom handlers, and the `allowDangerousHTML` option all provide openings.
+Use [`rehype-sanitize`][sanitize] to make the tree safe.
+
 ## Related
 
 *   [`rehype-raw`][raw]
     — Properly deal with HTML in Markdown (used after `remark-rehype`)
+*   [`rehype-sanitize`][sanitize]
+    — Sanitize HTML
 *   [`rehype-remark`](https://github.com/rehypejs/rehype-remark)
     — Transform HTML ([hast][]) to Markdown ([mdast][])
 *   [`rehype-retext`](https://github.com/rehypejs/rehype-retext)
@@ -173,6 +183,8 @@ abide by its terms.
 
 [raw]: https://github.com/rehypejs/rehype-raw
 
+[sanitize]: https://github.com/rehypejs/rehype-sanitize
+
 [mdast]: https://github.com/syntax-tree/mdast
 
 [hast]: https://github.com/syntax-tree/hast
@@ -180,3 +192,5 @@ abide by its terms.
 [nlcst]: https://github.com/syntax-tree/nlcst
 
 [to-hast]: https://github.com/syntax-tree/mdast-util-to-hast#tohastnode-options
+
+[xss]: https://en.wikipedia.org/wiki/Cross-site_scripting
