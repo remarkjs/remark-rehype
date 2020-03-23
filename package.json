@@ -30,7 +30,7 @@
     "index.js"
   ],
   "dependencies": {
-    "mdast-util-to-hast": "^6.0.0"
+    "mdast-util-to-hast": "^8.0.0"
   },
   "devDependencies": {
     "browserify": "^16.0.0",
