@@ -7,7 +7,7 @@ var markdown = require('remark-stringify')
 var html = require('rehype-stringify')
 var remark2rehype = require('.')
 
-test('remark2rehype()', function(t) {
+test('remark2rehype()', function (t) {
   t.equal(
     unified()
       .use(parse)
