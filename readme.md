@@ -98,7 +98,7 @@ Passed to [`mdast-util-to-hast`][to-hast].
 
 ## Security
 
-Use of `remark-react` can open you up to a [cross-site scripting (XSS)][xss]
+Use of `remark-rehype` can open you up to a [cross-site scripting (XSS)][xss]
 attack.
 Embedded [**hast**][hast] properties (`hName`, `hProperties`, `hChildren`),
 custom handlers, and the `allowDangerousHtml` option all provide openings.
