@@ -22,8 +22,8 @@ test('remark2rehype()', function (t) {
   t.equal(
     unified()
       .use(parse)
-      .use(remark2rehype, {allowDangerousHTML: true})
-      .use(html, {allowDangerousHTML: true})
+      .use(remark2rehype, {allowDangerousHtml: true})
+      .use(html, {allowDangerousHtml: true})
       .processSync('## Hello, <i>world</i>! ##')
       .toString(),
     '<h2>Hello, <i>world</i>!</h2>',
@@ -44,7 +44,7 @@ test('remark2rehype()', function (t) {
   t.equal(
     unified()
       .use(parse)
-      .use(remark2rehype, unified(), {allowDangerousHTML: true})
+      .use(remark2rehype, unified(), {allowDangerousHtml: true})
       .use(markdown)
       .processSync('## Hello, <i>world</i>! ##')
       .toString(),

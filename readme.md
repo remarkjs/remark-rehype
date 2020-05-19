@@ -101,7 +101,7 @@ Passed to [`mdast-util-to-hast`][to-hast].
 Use of `remark-react` can open you up to a [cross-site scripting (XSS)][xss]
 attack.
 Embedded [**hast**][hast] properties (`hName`, `hProperties`, `hChildren`),
-custom handlers, and the `allowDangerousHTML` option all provide openings.
+custom handlers, and the `allowDangerousHtml` option all provide openings.
 Use [`rehype-sanitize`][sanitize] to make the tree safe.
 
 ## Related
