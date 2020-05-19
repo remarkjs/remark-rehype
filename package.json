@@ -32,7 +32,7 @@
   ],
   "types": "types/index.d.ts",
   "dependencies": {
-    "mdast-util-to-hast": "^9.0.1"
+    "mdast-util-to-hast": "^9.1.0"
   },
   "devDependencies": {
     "browserify": "^16.0.0",
