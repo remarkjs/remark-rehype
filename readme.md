@@ -51,7 +51,7 @@ unified()
   .use(doc)
   .use(format)
   .use(html)
-  .process(vfile.readSync('example.md'), function(err, file) {
+  .process(vfile.readSync('example.md'), function (err, file) {
     console.error(report(err || file))
     console.log(String(file))
   })
@@ -61,7 +61,7 @@ Now, running `node example` yields:
 
 ```html
 example.md: no issues found
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
