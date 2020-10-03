@@ -13,6 +13,13 @@
 > Note: `remark-rehype` doesn’t deal with HTML inside the Markdown.
 > You’ll need [`rehype-raw`][raw] if you’re planning on doing that.
 
+## Note!
+
+This plugin is ready for the new parser in remark
+([`remarkjs/remark#536`](https://github.com/remarkjs/remark/pull/536)).
+The current and previous versions of the plugin work with the current and
+previous versions of remark.
+
 ## Install
 
 [npm][]:
