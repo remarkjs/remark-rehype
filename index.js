@@ -26,8 +26,8 @@ function bridge(destination, options) {
   function transformer(node, file, next) {
     destination.run(mdast2hast(node, options), file, done)
 
-    function done(err) {
-      next(err)
+    function done(error) {
+      next(error)
     }
   }
 }
