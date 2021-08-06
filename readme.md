@@ -22,6 +22,9 @@ previous versions of remark.
 
 ## Install
 
+This package is [ESM only](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c):
+Node 12+ is needed to use it and it must be `import`ed instead of `require`d.
+
 [npm][]:
 
 ```sh
@@ -40,26 +43,29 @@ Say we have the following file, `example.md`:
 Some _emphasis_, **importance**, and `code`.
 ```
 
-And our script, `example.js`, looks as follows:
+And our module, `example.js`, looks as follows:
 
 ```js
-var vfile = require('to-vfile')
-var report = require('vfile-reporter')
-var unified = require('unified')
-var markdown = require('remark-parse')
-var remark2rehype = require('remark-rehype')
-var doc = require('rehype-document')
-var format = require('rehype-format')
-var html = require('rehype-stringify')
+import {readSync} from 'to-vfile'
+import {reporter} from 'vfile-reporter'
+import {unified} from 'unified'
+import remarkParse from 'remark-parse'
+import remarkRehype from 'remark-rehype'
+import rehypeDocument from 'rehype-document'
+import rehypeFormat from 'rehype-format'
+import rehypeStringify from 'rehype-stringify'
+
+const file = readSync('example.md')
 
 unified()
-  .use(markdown)
-  .use(remark2rehype)
-  .use(doc)
-  .use(format)
-  .use(html)
-  .process(vfile.readSync('example.md'), function (err, file) {
-    console.error(report(err || file))
+  .use(remarkParse)
+  .use(remarkRehype)
+  .use(rehypeDocument)
+  .use(rehypeFormat)
+  .use(rehypeStringify)
+  .process(file)
+  .then((file) => {
+    console.error(reporter(file))
     console.log(String(file))
   })
 ```
@@ -87,7 +93,10 @@ example.md: no issues found
 
 ## API
 
-### `origin.use(remark2rehype[, destination][, options])`
+This package exports no identifiers.
+The default export is `remarkRehype`.
+
+### `origin.use(remarkRehype[, destination][, options])`
 
 [**remark**][remark] ([**mdast**][mdast]) plugin to bridge or mutate to
 [**rehype**][rehype] ([**hast**][hast]).
