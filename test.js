@@ -5,7 +5,7 @@ import remarkMarkdown from 'remark-stringify'
 import rehypeStringify from 'rehype-stringify'
 import remarkRehype from './index.js'
 
-test('remarkRehype', function (t) {
+test('remarkRehype', (t) => {
   t.equal(
     unified()
       .use(remarkParse)
