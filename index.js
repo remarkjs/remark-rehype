@@ -1,15 +1,11 @@
-'use strict'
-
-var mdast2hast = require('mdast-util-to-hast')
-
-module.exports = remark2rehype
+import mdast2hast from 'mdast-util-to-hast'
 
 // Attacher.
 // If a destination is given, runs the destination with the new hast tree
 // (bridge mode).
 // Without destination, returns the tree: further plugins run on that tree
 // (mutate mode).
-function remark2rehype(destination, options) {
+export default function remarkRehype(destination, options) {
   if (destination && !destination.process) {
     options = destination
     destination = null

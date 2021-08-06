@@ -1,11 +1,9 @@
-'use strict'
-
-var test = require('tape')
-var unified = require('unified')
-var parse = require('remark-parse')
-var markdown = require('remark-stringify')
-var html = require('rehype-stringify')
-var remark2rehype = require('.')
+import test from 'tape'
+import unified from 'unified'
+import parse from 'remark-parse'
+import markdown from 'remark-stringify'
+import html from 'rehype-stringify'
+import remark2rehype from './index.js'
 
 test('remark2rehype()', function (t) {
   t.equal(

@@ -26,11 +26,12 @@
     "Titus Wormer <tituswormer@gmail.com> (https://wooorm.com)",
     "John Otander <johnotander@gmail.com> (https://johno.com)"
   ],
+  "sideEffects": false,
+  "type": "module",
+  "main": "index.js",
   "files": [
-    "index.js",
-    "types/index.d.ts"
+    "index.js"
   ],
-  "types": "types/index.d.ts",
   "dependencies": {
     "mdast-util-to-hast": "^10.2.0"
   },
@@ -65,6 +66,10 @@
   "xo": {
     "prettier": true,
     "esnext": false,
+    "rules": {
+      "no-var": "off",
+      "prefer-arrow-callback": "off"
+    },
     "ignores": [
       "types/"
     ]
