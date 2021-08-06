@@ -33,7 +33,7 @@
     "index.js"
   ],
   "dependencies": {
-    "mdast-util-to-hast": "^10.2.0"
+    "mdast-util-to-hast": "^11.0.0"
   },
   "devDependencies": {
     "c8": "^7.0.0",

@@ -1,4 +1,4 @@
-import mdast2hast from 'mdast-util-to-hast'
+import {toHast} from 'mdast-util-to-hast'
 
 // Attacher.
 // If a destination is given, runs the destination with the new hast tree
@@ -20,7 +20,7 @@ function bridge(destination, options) {
   return transformer
 
   function transformer(node, file, next) {
-    destination.run(mdast2hast(node, options), file, done)
+    destination.run(toHast(node, options), file, done)
 
     function done(error) {
       next(error)
@@ -34,6 +34,6 @@ function mutate(options) {
   return transformer
 
   function transformer(node) {
-    return mdast2hast(node, options)
+    return toHast(node, options)
   }
 }
