@@ -1,16 +1,16 @@
 import test from 'tape'
-import unified from 'unified'
-import parse from 'remark-parse'
-import markdown from 'remark-stringify'
-import html from 'rehype-stringify'
-import remark2rehype from './index.js'
+import {unified} from 'unified'
+import remarkParse from 'remark-parse'
+import remarkMarkdown from 'remark-stringify'
+import rehypeStringify from 'rehype-stringify'
+import remarkRehype from './index.js'
 
-test('remark2rehype()', function (t) {
+test('remarkRehype', function (t) {
   t.equal(
     unified()
-      .use(parse)
-      .use(remark2rehype)
-      .use(html)
+      .use(remarkParse)
+      .use(remarkRehype)
+      .use(rehypeStringify)
       .processSync('## Hello, world! ##')
       .toString(),
     '<h2>Hello, world!</h2>',
@@ -19,9 +19,9 @@ test('remark2rehype()', function (t) {
 
   t.equal(
     unified()
-      .use(parse)
-      .use(remark2rehype, {allowDangerousHtml: true})
-      .use(html, {allowDangerousHtml: true})
+      .use(remarkParse)
+      .use(remarkRehype, {allowDangerousHtml: true})
+      .use(rehypeStringify, {allowDangerousHtml: true})
       .processSync('## Hello, <i>world</i>! ##')
       .toString(),
     '<h2>Hello, <i>world</i>!</h2>',
@@ -30,9 +30,9 @@ test('remark2rehype()', function (t) {
 
   t.equal(
     unified()
-      .use(parse)
-      .use(remark2rehype, unified())
-      .use(markdown)
+      .use(remarkParse)
+      .use(remarkRehype, unified())
+      .use(remarkMarkdown)
       .processSync('## Hello, world! ##')
       .toString(),
     '## Hello, world!\n',
@@ -41,9 +41,9 @@ test('remark2rehype()', function (t) {
 
   t.equal(
     unified()
-      .use(parse)
-      .use(remark2rehype, unified(), {allowDangerousHtml: true})
-      .use(markdown)
+      .use(remarkParse)
+      .use(remarkRehype, unified(), {allowDangerousHtml: true})
+      .use(remarkMarkdown)
       .processSync('## Hello, <i>world</i>! ##')
       .toString(),
     '## Hello, <i>world</i>!\n',
