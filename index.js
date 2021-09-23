@@ -4,6 +4,8 @@
  * @typedef {import('mdast').Root} MdastRoot
  * @typedef {import('mdast-util-to-hast').Options} Options
  * @typedef {import('unified').Processor<any, any, any, any>} Processor
+ *
+ * @typedef {import('mdast-util-to-hast')} DoNotTouchAsThisImportIncludesRawInTree
  */
 
 import {toHast} from 'mdast-util-to-hast'
