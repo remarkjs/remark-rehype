@@ -26,12 +26,12 @@ import {toHast} from 'mdast-util-to-hast'
  *   Options passed to `mdast-util-to-hast`.
  */
 const remarkRehype =
-  /** @type {(import('unified').Plugin<[Processor, Options?]|[Options]|[], MdastRoot>)} */
+  /** @type {(import('unified').Plugin<[Processor, Options?]|[null|undefined, Options?]|[Options]|[], MdastRoot>)} */
   (
     function (destination, options) {
       return destination && 'run' in destination
         ? bridge(destination, options)
-        : mutate(destination)
+        : mutate(destination || options)
     }
   )
 

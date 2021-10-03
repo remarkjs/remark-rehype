@@ -31,6 +31,17 @@ test('remarkRehype', (t) => {
   t.equal(
     unified()
       .use(remarkParse)
+      .use(remarkRehype, null, {allowDangerousHtml: true})
+      .use(rehypeStringify, {allowDangerousHtml: true})
+      .processSync('## Hello, <i>world</i>! ##')
+      .toString(),
+    '<h2>Hello, <i>world</i>!</h2>',
+    'should mutate with `processor: null` and options'
+  )
+
+  t.equal(
+    unified()
+      .use(remarkParse)
       .use(remarkRehype, unified())
       .use(remarkMarkdown)
       .processSync('## Hello, world! ##')
