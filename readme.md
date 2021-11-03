@@ -186,7 +186,7 @@ If a [`Unified`][processor] destination processor is given, that processor runs
 with a new HTML (hast) tree (bridge-mode).
 As the given processor runs with a hast tree, and rehype plugins support
 hast, that means rehype plugins can be used with the given processor.
-The hast tree is discarded in the end
+The hast tree is discarded in the end.
 
 > 👉 **Note**: It’s highly unlikely that you want to do this.
 
