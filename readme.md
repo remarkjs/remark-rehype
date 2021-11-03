@@ -438,7 +438,7 @@ as instructions on what hast nodes to create.
 An example is `remark-math`, which defines semistandard math nodes that this
 plugin doesn’t understand.
 To solve this, `remark-math` defines instructions on mdast nodes that this
-plugin does understand, as they define a certain hast structure.
+plugin does understand because they define a certain hast structure.
 
 As these instructions are somewhat advanced in that they requires knowledge of
 ASTs, we defer to the documentation available in the low level utility we use:
@@ -450,7 +450,7 @@ Assuming you know how to use (semantic) HTML and CSS, then it should generally
 be straight forward to style the HTML produced by this plugin.
 With CSS, you can get creative and style the results as you please.
 
-Some semistandard features, notable [`remark-gfm`][remark-gfm]’s tasklists and
+Some semistandard features, notable [`remark-gfm`][remark-gfm]s tasklists and
 footnotes, generate HTML that be unintuitive, as it matches exactly what GitHub
 produces for their website.
 There is a project, [`sindresorhus/github-markdown-css`][github-markdown-css],
@@ -487,7 +487,7 @@ Use [`rehype-sanitize`][rehype-sanitize] to make the tree safe.
 ## Related
 
 *   [`rehype-raw`][rehype-raw]
-    — rehype plugin to parse the tree again
+    — rehype plugin to parse the tree again and support `raw` nodes
 *   [`rehype-sanitize`][rehype-sanitize]
     — rehype plugin to sanitize HTML
 *   [`rehype-remark`](https://github.com/rehypejs/rehype-remark)
