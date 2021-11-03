@@ -432,7 +432,6 @@ As the original tree (in this case, mdast for markdown) is in some cases
 limited compared to the destination (in this case, hast for HTML) tree,
 is it possible to provide more info in the original to define what the
 result will be in the destination?
-
 This is possible by defining data on mdast nodes, which this plugin will read
 as instructions on what hast nodes to create.
 
