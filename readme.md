@@ -354,8 +354,8 @@ Running that code yields:
 
 If you know that the markdown is authored in a language other than English,
 and you’re using `remark-gfm` to match how GitHub renders markdown, and you know
-that footnotes can be used, you should translate the labels associated with
-them.
+that footnotes are (or can?) be used, you should translate the labels associated
+with them.
 
 Let’s first set the stage:
 
@@ -393,10 +393,10 @@ Running that code yields:
 </section>
 ```
 
-This is a mix of English and Dutch, that screenreaders can’t nicely handle.
+This is a mix of English and Dutch that screen readers can’t handle nicely.
 Let’s say our program does know that the markdown is in Dutch.
 In that case, it’s important to translate and define the labels relating to
-footnotes so that screenreader users can properly pronounce the page:
+footnotes so that screen reader users can properly pronounce the page:
 
 ```diff
 @@ -10,7 +10,7 @@ async function main() {
