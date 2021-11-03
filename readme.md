@@ -314,8 +314,9 @@ If you do not trust the authors of the input markdown, or if you want to make
 sure that rehype plugins can see HTML embedded in markdown, use
 [`rehype-raw`][rehype-raw].
 The following example passes `allowDangerousHtml` to this plugin
-(`remark-rehype`), then turns the raw embedded HTML into proper HTML nodes,
-and finally sanitizes the HTML by only allowing safe things:
+(`remark-rehype`), then turns the raw embedded HTML into proper HTML nodes
+(`rehype-raw`), and finally sanitizes the HTML by only allowing safe things
+(`rehype-sanitize`):
 
 ```js
 import {unified} from 'unified'
