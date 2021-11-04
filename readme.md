@@ -80,7 +80,7 @@ task and not always needed.
 To use both together, you also have to configure `remark-rehype` with
 `allowDangerousHtml: true`.
 
-The rehype plugin [`rehype-remark`][rehype-remark] does the inverse as this
+The rehype plugin [`rehype-remark`][rehype-remark] does the inverse of this
 plugin.
 It turns HTML into markdown.
 
@@ -450,12 +450,12 @@ Assuming you know how to use (semantic) HTML and CSS, then it should generally
 be straight forward to style the HTML produced by this plugin.
 With CSS, you can get creative and style the results as you please.
 
-Some semistandard features, notable [`remark-gfm`][remark-gfm]s tasklists and
+Some semistandard features, notably [`remark-gfm`][remark-gfm]s tasklists and
 footnotes, generate HTML that be unintuitive, as it matches exactly what GitHub
 produces for their website.
 There is a project, [`sindresorhus/github-markdown-css`][github-markdown-css],
 that exposes the stylesheet that GitHub uses for rendered markdown, which might
-either be inspirational for more complex features, or be used as-is to exactly
+either be inspirational for more complex features, or can be used as-is to exactly
 match how GitHub styles rendered markdown.
 
 ## Types
