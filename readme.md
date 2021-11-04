@@ -455,8 +455,8 @@ footnotes, generate HTML that be unintuitive, as it matches exactly what GitHub
 produces for their website.
 There is a project, [`sindresorhus/github-markdown-css`][github-markdown-css],
 that exposes the stylesheet that GitHub uses for rendered markdown, which might
-either be inspirational for more complex features, or can be used as-is to exactly
-match how GitHub styles rendered markdown.
+either be inspirational for more complex features, or can be used as-is to
+exactly match how GitHub styles rendered markdown.
 
 ## Types
 
