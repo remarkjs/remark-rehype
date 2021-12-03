@@ -3,7 +3,15 @@ import {unified} from 'unified'
 import remarkParse from 'remark-parse'
 import remarkMarkdown from 'remark-stringify'
 import rehypeStringify from 'rehype-stringify'
-import remarkRehype from './index.js'
+import remarkRehype, {defaultHandlers, all, one} from './index.js'
+
+test('exports', (t) => {
+  t.assert(defaultHandlers, 'should export `defaultHandlers`')
+  t.assert(one, 'should export `one`')
+  t.assert(all, 'should export `all`')
+
+  t.end()
+})
 
 test('remarkRehype', (t) => {
   t.equal(
