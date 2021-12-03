@@ -19,8 +19,8 @@
 *   [API](#api)
     *   [`unified().use(remarkRehype[, destination][, options])`](#unifieduseremarkrehype-destination-options)
     *   [`defaultHandlers`](#defaulthandlers)
-    *   [`one`](#one)
     *   [`all`](#all)
+    *   [`one`](#one)
 *   [Examples](#examples)
     *   [Example: supporting HTML in markdown naïvely](#example-supporting-html-in-markdown-naïvely)
     *   [Example: supporting HTML in markdown properly](#example-supporting-html-in-markdown-properly)
@@ -176,7 +176,7 @@ example.md: no issues found
 
 ## API
 
-This package exports no identifiers.
+This package exports `defaultHandlers`, `all`, and `one`.
 The default export is `remarkRehype`.
 
 ### `unified().use(remarkRehype[, destination][, options])`
@@ -277,18 +277,18 @@ to the documentation available in [`mdast-util-to-hast`][mdast-util-to-hast].
 
 ### `defaultHandlers`
 
-Re-exported [`defaultHandlers`](https://github.com/syntax-tree/mdast-util-to-hast#defaulthandlers)
-from `mdast-util-to-hast`.
-
-### `one`
-
-Re-exported [`one`](https://github.com/syntax-tree/mdast-util-to-hast#one) from
-`mdast-util-to-hast`.
+The `defaultHandlers` export from [`mdast-util-to-hast`][mdast-util-to-hast],
+useful when passing in your own handlers.
 
 ### `all`
 
-Re-exported [`all`](https://github.com/syntax-tree/mdast-util-to-hast#all) from
-`mdast-util-to-hast`.
+The `all` export from [`mdast-util-to-hast`][mdast-util-to-hast],
+useful when passing in your own handlers.
+
+### `one`
+
+The `one` export from [`mdast-util-to-hast`][mdast-util-to-hast],
+useful when passing in your own handlers.
 
 ## Examples
 
