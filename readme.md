@@ -18,6 +18,9 @@
 *   [Use](#use)
 *   [API](#api)
     *   [`unified().use(remarkRehype[, destination][, options])`](#unifieduseremarkrehype-destination-options)
+    *   [`defaultHandlers`](#defaulthandlers)
+    *   [`one`](#one)
+    *   [`all`](#all)
 *   [Examples](#examples)
     *   [Example: supporting HTML in markdown naïvely](#example-supporting-html-in-markdown-naïvely)
     *   [Example: supporting HTML in markdown properly](#example-supporting-html-in-markdown-properly)
@@ -271,6 +274,21 @@ to the documentation available in [`mdast-util-to-hast`][mdast-util-to-hast].
 
 This option is a bit advanced as it requires knowledge of ASTs, so we defer
 to the documentation available in [`mdast-util-to-hast`][mdast-util-to-hast].
+
+### `defaultHandlers`
+
+Re-exported [`defaultHandlers`](https://github.com/syntax-tree/mdast-util-to-hast#defaulthandlers)
+from `mdast-util-to-hast`.
+
+### `one`
+
+Re-exported [`one`](https://github.com/syntax-tree/mdast-util-to-hast#one) from
+`mdast-util-to-hast`.
+
+### `all`
+
+Re-exported [`all`](https://github.com/syntax-tree/mdast-util-to-hast#all) from
+`mdast-util-to-hast`.
 
 ## Examples
 
