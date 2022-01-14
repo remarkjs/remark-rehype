@@ -229,6 +229,9 @@ Elements by their ID are made available by browsers on the `window` object,
 which is a security risk.
 Using a prefix solves this problem.
 
+More information on how to handle clobbering and the prefix is explained in
+[Example: headings (DOM clobbering) in `rehype-sanitize`][clobber-example].
+
 > 👉 **Note**: this option affects footnotes.
 > Footnotes are not specified by CommonMark so they’re not supported in remark
 > by default.
@@ -612,3 +615,5 @@ abide by its terms.
 [hast]: https://github.com/syntax-tree/hast
 
 [github-markdown-css]: https://github.com/sindresorhus/github-markdown-css
+
+[clobber-example]: https://github.com/rehypejs/rehype-sanitize#example-headings-dom-clobbering
