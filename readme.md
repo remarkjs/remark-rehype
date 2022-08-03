@@ -259,7 +259,7 @@ choice of css.
 > 👉 **Note**: this option affects footnotes.
 > Footnotes are not specified by CommonMark.
 > They are supported by GitHub, so they can be enabled by using the utility
-> [`mdast-util-gfm`][mdast-util-gfm].
+> [`remark-gfm`][remark-gfm].
 
 ###### `options.footnoteLabelProperties`
 
@@ -273,7 +273,7 @@ either no class or no id, or an empty object to have none.
 > 👉 **Note**: this option affects footnotes.
 > Footnotes are not specified by CommonMark.
 > They are supported by GitHub, so they can be enabled by using the utility
-> [`mdast-util-gfm`][mdast-util-gfm].
+> [`remark-gfm`][remark-gfm].
 
 ###### `options.footnoteBackLabel`
 
