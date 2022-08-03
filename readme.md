@@ -90,7 +90,7 @@ It turns HTML into markdown.
 ## Install
 
 This package is [ESM only](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c).
-In Node.js (version 12.20+, 14.14+, or 16.0+), install with [npm][]:
+In Node.js (version 12.20+, 14.14+, 16.0+, 18.0+), install with [npm][]:
 
 ```sh
 npm install remark-rehype
@@ -134,20 +134,16 @@ import rehypeDocument from 'rehype-document'
 import rehypeFormat from 'rehype-format'
 import rehypeStringify from 'rehype-stringify'
 
-main()
+const file = await unified()
+  .use(remarkParse)
+  .use(remarkRehype)
+  .use(rehypeDocument)
+  .use(rehypeFormat)
+  .use(rehypeStringify)
+  .process(await read('example.md'))
 
-async function main() {
-  const file = await unified()
-    .use(remarkParse)
-    .use(remarkRehype)
-    .use(rehypeDocument)
-    .use(rehypeFormat)
-    .use(rehypeStringify)
-    .process(await read('example.md'))
-
-  console.error(reporter(file))
-  console.log(String(file))
-}
+console.error(reporter(file))
+console.log(String(file))
 ```
 
 Now, running `node example.js` yields:
@@ -332,17 +328,13 @@ import remarkParse from 'remark-parse'
 import remarkRehype from 'remark-rehype'
 import rehypeStringify from 'rehype-stringify'
 
-main()
+const file = await unified()
+  .use(remarkParse)
+  .use(remarkRehype, {allowDangerousHtml: true})
+  .use(rehypeStringify, {allowDangerousHtml: true})
+  .process('It <i>works</i>! <img onerror="alert(1)">')
 
-async function main() {
-  const file = await unified()
-    .use(remarkParse)
-    .use(remarkRehype, {allowDangerousHtml: true})
-    .use(rehypeStringify, {allowDangerousHtml: true})
-    .process('It <i>works</i>! <img onerror="alert(1)">')
-
-  console.log(String(file))
-}
+console.log(String(file))
 ```
 
 Running that code yields:
@@ -372,19 +364,15 @@ import rehypeRaw from 'rehype-raw'
 import rehypeSanitize from 'rehype-sanitize'
 import rehypeStringify from 'rehype-stringify'
 
-main()
+const file = await unified()
+  .use(remarkParse)
+  .use(remarkRehype, {allowDangerousHtml: true})
+  .use(rehypeRaw)
+  .use(rehypeSanitize)
+  .use(rehypeStringify)
+  .process('It <i>works</i>! <img onerror="alert(1)">')
 
-async function main() {
-  const file = await unified()
-    .use(remarkParse)
-    .use(remarkRehype, {allowDangerousHtml: true})
-    .use(rehypeRaw)
-    .use(rehypeSanitize)
-    .use(rehypeStringify)
-    .process('It <i>works</i>! <img onerror="alert(1)">')
-
-  console.log(String(file))
-}
+console.log(String(file))
 ```
 
 Running that code yields:
@@ -412,18 +400,14 @@ import remarkGfm from 'remark-gfm'
 import remarkRehype from 'remark-rehype'
 import rehypeStringify from 'rehype-stringify'
 
-main()
+const file = await unified()
+  .use(remarkParse)
+  .use(remarkGfm)
+  .use(remarkRehype)
+  .use(rehypeStringify)
+  .process('Hallo[^1]\n\n[^1]: Wereld!')
 
-async function main() {
-  const file = await unified()
-    .use(remarkParse)
-    .use(remarkGfm)
-    .use(remarkRehype)
-    .use(rehypeStringify)
-    .process('Hallo[^1]\n\n[^1]: Wereld!')
-
-  console.log(String(file))
-}
+console.log(String(file))
 ```
 
 Running that code yields:
@@ -445,14 +429,14 @@ In that case, it’s important to translate and define the labels relating to
 footnotes so that screen reader users can properly pronounce the page:
 
 ```diff
-@@ -10,7 +10,7 @@ async function main() {
-   const file = await unified()
-     .use(remarkParse)
-     .use(remarkGfm)
--    .use(remarkRehype)
-+    .use(remarkRehype, {footnoteLabel: 'Voetnoten', footnoteBackLabel: 'Terug'})
-     .use(rehypeStringify)
-     .process('Hallo[^1]\n\n[^1]: Wereld!')
+@@ -10,7 +10,7 @@
+ const file = await unified()
+   .use(remarkParse)
+   .use(remarkGfm)
+-  .use(remarkRehype)
++  .use(remarkRehype, {footnoteLabel: 'Voetnoten', footnoteBackLabel: 'Terug'})
+   .use(rehypeStringify)
+   .process('Hallo[^1]\n\n[^1]: Wereld!')
 ```
 
 Running the code with the above patch applied, yields:
@@ -514,7 +498,7 @@ accepted options.
 
 Projects maintained by the unified collective are compatible with all maintained
 versions of Node.js.
-As of now, that is Node.js 12.20+, 14.14+, and 16.0+.
+As of now, that is Node.js 12.20+, 14.14+, 16.0+, and 18.0+.
 Our projects sometimes work with older versions, but this is not guaranteed.
 
 This plugin works with `unified` version 6+, `remark-parse` version 3+ (used in
