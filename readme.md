@@ -258,8 +258,8 @@ Can be changed to match your document structure and play well with your css.
 
 ###### `options.footnoteLabelProperties`
 
-Properties to use on the footnote label (`object`, default: `{className:
-['sr-only']}`). Importantly, `id: 'footnote-label'` is always added, because
+Properties to use on the footnote label (`object`, default: `{className: ['sr-only']}`).
+Importantly, `id: 'footnote-label'` is always added, because
 footnote calls use it with `aria-describedby` to provide an accessible label.
 A `sr-only` class is added by default to hide this from sighted users.
 Change it to make the label visible, or add classes for other purposes.
