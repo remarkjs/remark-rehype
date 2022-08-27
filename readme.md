@@ -249,8 +249,7 @@ Change it when the markdown is not in English.
 ###### `options.footnoteLabelTagName`
 
 HTML tag to use for the footnote label (`string`, default: `h2`).
-Can be changed to match your document structure and play well with your
-choice of css.
+Can be changed to match your document structure and play well with your css.
 
 > 👉 **Note**: this option affects footnotes.
 > Footnotes are not specified by CommonMark.
@@ -259,12 +258,11 @@ choice of css.
 
 ###### `options.footnoteLabelProperties`
 
-Properties to use on the footnote label (`object`, default: `{id:
-'footnote-label', className: ['sr-only']}`).
+Properties to use on the footnote label (`object`, default: `{className: ['sr-only']}`).
+Importantly, `id: 'footnote-label'` is always added, because
+footnote calls use it with `aria-describedby` to provide an accessible label.
 A `sr-only` class is added by default to hide this from sighted users.
 Change it to make the label visible, or add classes for other purposes.
-Provide an object with no `className` or no `id` to have a footnote label with
-either no class or no id, or an empty object to have none.
 
 > 👉 **Note**: this option affects footnotes.
 > Footnotes are not specified by CommonMark.
