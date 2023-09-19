@@ -96,14 +96,14 @@ npm install remark-rehype
 In Deno with [`esm.sh`][esmsh]:
 
 ```js
-import remarkRehype from 'https://esm.sh/remark-rehype@10'
+import remarkRehype from 'https://esm.sh/remark-rehype@11'
 ```
 
 In browsers with [`esm.sh`][esmsh]:
 
 ```html
 <script type="module">
-  import remarkRehype from 'https://esm.sh/remark-rehype@10?bundle'
+  import remarkRehype from 'https://esm.sh/remark-rehype@11?bundle'
 </script>
 ```
 
