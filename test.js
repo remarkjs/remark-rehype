@@ -2,13 +2,13 @@ import assert from 'node:assert/strict'
 import test from 'node:test'
 import rehypeStringify from 'rehype-stringify'
 import remarkParse from 'remark-parse'
+import remarkRehype from 'remark-rehype'
 import remarkStringify from 'remark-stringify'
 import {unified} from 'unified'
-import remarkRehype from './index.js'
 
 test('remarkRehype', async function (t) {
   await t.test('should expose the public api', async function () {
-    assert.deepEqual(Object.keys(await import('./index.js')).sort(), [
+    assert.deepEqual(Object.keys(await import('remark-rehype')).sort(), [
       'default',
       'defaultFootnoteBackContent',
       'defaultFootnoteBackLabel',
