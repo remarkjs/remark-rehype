@@ -39,7 +39,8 @@
     "@types/hast": "^3.0.0",
     "@types/mdast": "^4.0.0",
     "mdast-util-to-hast": "^13.0.0",
-    "unified": "^11.0.0"
+    "unified": "^11.0.0",
+    "vfile": "^6.0.0"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",
@@ -78,12 +79,6 @@
   "typeCoverage": {
     "atLeast": 100,
     "detail": true,
-    "#": "needed `any`s; to do: remove after update of deps",
-    "ignoreFiles": [
-      "lib/index.d.ts",
-      "lib/index.js",
-      "index.d.ts"
-    ],
     "ignoreCatch": true,
     "strict": true
   },

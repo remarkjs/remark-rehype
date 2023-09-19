@@ -19,8 +19,6 @@
 *   [API](#api)
     *   [`unified().use(remarkRehype[, destination][, options])`](#unifieduseremarkrehype-destination-options)
     *   [`defaultHandlers`](#defaulthandlers)
-    *   [`all`](#all)
-    *   [`one`](#one)
 *   [Examples](#examples)
     *   [Example: supporting HTML in markdown naïvely](#example-supporting-html-in-markdown-naïvely)
     *   [Example: supporting HTML in markdown properly](#example-supporting-html-in-markdown-properly)
@@ -422,7 +420,7 @@ footnotes so that screen reader users can properly pronounce the page:
    .use(remarkParse)
    .use(remarkGfm)
 -  .use(remarkRehype)
-+  .use(remarkRehype, {footnoteLabel: 'Voetnoten', footnoteBackLabel: 'Terug'})
++  .use(remarkRehype, {footnoteBackLabel: 'Terug', footnoteLabel: 'Voetnoten'})
    .use(rehypeStringify)
    .process('Hallo[^1]\n\n[^1]: Wereld!')
 ```
