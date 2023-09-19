@@ -3,6 +3,6 @@
  * @typedef {import('./lib/index.js').Processor} Processor
  */
 
-export {defaultHandlers, all, one} from 'mdast-util-to-hast'
+export {defaultHandlers} from 'mdast-util-to-hast'
 
 export {default} from './lib/index.js'

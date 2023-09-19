@@ -172,7 +172,7 @@ example.md: no issues found
 
 ## API
 
-This package exports `defaultHandlers`, `all`, and `one`.
+This package exports `defaultHandlers`.
 The default export is `remarkRehype`.
 
 ### `unified().use(remarkRehype[, destination][, options])`
@@ -300,16 +300,6 @@ to the documentation available in [`mdast-util-to-hast`][mdast-util-to-hast].
 ### `defaultHandlers`
 
 The `defaultHandlers` export from [`mdast-util-to-hast`][mdast-util-to-hast],
-useful when passing in your own handlers.
-
-### `all`
-
-The `all` export from [`mdast-util-to-hast`][mdast-util-to-hast],
-useful when passing in your own handlers.
-
-### `one`
-
-The `one` export from [`mdast-util-to-hast`][mdast-util-to-hast],
 useful when passing in your own handlers.
 
 ## Examples
