@@ -17,6 +17,8 @@
 *   [Install](#install)
 *   [Use](#use)
 *   [API](#api)
+    *   [`defaultFootnoteBackContent(referenceIndex, rereferenceIndex)`](#defaultfootnotebackcontentreferenceindex-rereferenceindex)
+    *   [`defaultFootnoteBackLabel(referenceIndex, rereferenceIndex)`](#defaultfootnotebacklabelreferenceindex-rereferenceindex)
     *   [`defaultHandlers`](#defaulthandlers)
     *   [`unified().use(remarkRehype[, destination][, options])`](#unifieduseremarkrehype-destination-options)
     *   [`Options`](#options)
@@ -168,13 +170,26 @@ example.md: no issues found
 
 ## API
 
-This package exports the identifier [`defaultHandlers`][api-default-handlers].
+This package exports the identifiers
+[`defaultFootnoteBackContent`][api-default-footnote-back-content],
+[`defaultFootnoteBackLabel`][api-default-footnote-back-label], and
+[`defaultHandlers`][api-default-handlers].
 The default export is [`remarkRehype`][api-remark-rehype].
+
+### `defaultFootnoteBackContent(referenceIndex, rereferenceIndex)`
+
+See [`defaultFootnoteBackContent` from
+`mdast-util-to-hast`][mdast-util-to-hast-default-footnote-back-content]
+
+### `defaultFootnoteBackLabel(referenceIndex, rereferenceIndex)`
+
+See [`defaultFootnoteBackLabel` from
+`mdast-util-to-hast`][mdast-util-to-hast-default-footnote-back-label]
 
 ### `defaultHandlers`
 
-Default handlers for nodes ([`Handlers` from
-`mdast-util-to-hast`][mdast-util-to-hast-handlers]).
+See [`defaultHandlers` from
+`mdast-util-to-hast`][mdast-util-to-hast-default-handlers]
 
 ### `unified().use(remarkRehype[, destination][, options])`
 
@@ -693,6 +708,8 @@ abide by its terms.
 
 [mdast-util-to-hast-footnote-back-label-template]: https://github.com/syntax-tree/mdast-util-to-hast#footnotebacklabeltemplate
 
+[mdast-util-to-hast-default-handlers]: https://github.com/syntax-tree/mdast-util-to-hast#defaulthandlers
+
 [mdast-util-to-hast-handlers]: https://github.com/syntax-tree/mdast-util-to-hast#handlers
 
 [mdast-util-to-hast-handler]: https://github.com/syntax-tree/mdast-util-to-hast#handler
@@ -732,6 +749,10 @@ abide by its terms.
 [unified-transformer]: https://github.com/unifiedjs/unified#transformer
 
 [wiki-xss]: https://en.wikipedia.org/wiki/Cross-site_scripting
+
+[api-default-footnote-back-content]: #defaultfootnotebackcontentreferenceindex-rereferenceindex
+
+[api-default-footnote-back-label]: #defaultfootnotebacklabelreferenceindex-rereferenceindex
 
 [api-default-handlers]: #defaulthandlers
 
