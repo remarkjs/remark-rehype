@@ -4,16 +4,16 @@
   "description": "remark plugin that turns markdown into HTML to support rehype",
   "license": "MIT",
   "keywords": [
-    "unified",
-    "remark",
-    "rehype",
-    "remark-plugin",
-    "rehype-plugin",
-    "plugin",
-    "html",
     "hast",
+    "html",
+    "markdown",
     "mdast",
-    "markdown"
+    "plugin",
+    "rehype",
+    "rehype-plugin",
+    "remark",
+    "remark-plugin",
+    "unified"
   ],
   "repository": "remarkjs/remark-rehype",
   "bugs": "https://github.com/remarkjs/remark-rehype/issues",
@@ -57,38 +57,38 @@
   },
   "scripts": {
     "build": "tsc --build --clean && tsc --build && type-coverage",
-    "format": "remark . -qfo && prettier . -w --log-level warn && xo --fix",
+    "format": "remark . --frail --output --quiet && prettier . --log-level warn --write && xo --fix",
+    "prepack": "npm run build && npm run format",
+    "test": "npm run build && npm run format && npm run test-coverage",
     "test-api": "node --conditions development test.js",
-    "test-coverage": "c8 --check-coverage --branches 100 --functions 100 --lines 100 --statements 100 --reporter lcov npm run test-api",
-    "test-types": "dtslint types",
-    "test": "npm run build && npm run format && npm run test-coverage"
+    "test-coverage": "c8 --100 --reporter lcov npm run test-api"
   },
   "prettier": {
-    "tabWidth": 2,
-    "useTabs": false,
-    "singleQuote": true,
     "bracketSpacing": false,
+    "singleQuote": true,
     "semi": false,
-    "trailingComma": "none"
-  },
-  "xo": {
-    "prettier": true
+    "tabWidth": 2,
+    "trailingComma": "none",
+    "useTabs": false
   },
   "remarkConfig": {
     "plugins": [
-      "preset-wooorm"
+      "remark-preset-wooorm"
     ]
   },
   "typeCoverage": {
     "atLeast": 100,
     "detail": true,
-    "strict": true,
-    "ignoreCatch": true,
-    "#": "needed `any`s",
+    "#": "needed `any`s; to do: remove after update of deps",
     "ignoreFiles": [
       "lib/index.d.ts",
       "lib/index.js",
       "index.d.ts"
-    ]
+    ],
+    "ignoreCatch": true,
+    "strict": true
+  },
+  "xo": {
+    "prettier": true
   }
 }
