@@ -42,7 +42,7 @@
     "unified": "^10.0.0"
   },
   "devDependencies": {
-    "@types/tape": "^5.0.0",
+    "@types/node": "^20.0.0",
     "c8": "^8.0.0",
     "prettier": "^3.0.0",
     "rehype-stringify": "^9.0.0",
@@ -50,7 +50,6 @@
     "remark-parse": "^10.0.0",
     "remark-preset-wooorm": "^9.0.0",
     "remark-stringify": "^10.0.0",
-    "tape": "^5.0.0",
     "type-coverage": "^2.0.0",
     "typescript": "^5.0.0",
     "xo": "^0.56.0"
