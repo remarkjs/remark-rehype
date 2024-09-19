@@ -1,3 +1,9 @@
+/**
+ * @import {Text as HastText} from 'hast'
+ * @import {Handler} from 'mdast-util-to-hast'
+ * @import {Text as MdastText} from 'mdast'
+ */
+
 import assert from 'node:assert/strict'
 import test from 'node:test'
 import rehypeStringify from 'rehype-stringify'
@@ -23,24 +29,41 @@ test('remarkRehype', async function (t) {
           .use(remarkParse)
           .use(remarkRehype)
           .use(rehypeStringify)
-          .process('## Hello, world! ##')
+          .process('# hi')
       ),
-      '<h2>Hello, world!</h2>'
+      '<h1>hi</h1>'
     )
   })
 
-  await t.test('should mutate with options', async function () {
+  await t.test('should mutate w/ options', async function () {
     assert.equal(
       String(
         await unified()
           .use(remarkParse)
-          .use(remarkRehype, {allowDangerousHtml: true})
-          .use(rehypeStringify, {allowDangerousHtml: true})
-          .process('## Hello, <i>world</i>! ##')
+          .use(remarkRehype, {handlers: {text}})
+          .use(rehypeStringify)
+          .process('# hi')
       ),
-      '<h2>Hello, <i>world</i>!</h2>'
+      '<h1>HI</h1>'
     )
   })
+
+  await t.test(
+    'should mutate w/ options and explicit unknown 2nd parameter',
+    async function () {
+      assert.equal(
+        String(
+          await unified()
+            .use(remarkParse)
+            // @ts-expect-error: this tests the file set passed by `unified-engine`.
+            .use(remarkRehype, {handlers: {text}}, {some: 'option'})
+            .use(rehypeStringify)
+            .process('# hi')
+        ),
+        '<h1>HI</h1>'
+      )
+    }
+  )
 
   await t.test(
     'should mutate with `processor: undefined` and options',
@@ -49,12 +72,12 @@ test('remarkRehype', async function (t) {
         String(
           await unified()
             .use(remarkParse)
-            // @ts-expect-error: this is not typed as being supported w/ the overload, but always was.
-            .use(remarkRehype, undefined, {allowDangerousHtml: true})
-            .use(rehypeStringify, {allowDangerousHtml: true})
-            .process('## Hello, <i>world</i>! ##')
+            // @ts-expect-error: this tests the file set passed by `unified-engine`.
+            .use(remarkRehype, undefined, {handlers: {text}})
+            .use(rehypeStringify)
+            .process('# hi')
         ),
-        '<h2>Hello, <i>world</i>!</h2>'
+        '<h1>HI</h1>'
       )
     }
   )
@@ -103,3 +126,12 @@ test('remarkRehype', async function (t) {
     assert.equal(document, '<p>hi</p>')
   })
 })
+
+/**
+ * @type {Handler}
+ * @param {MdastText} node
+ * @returns {HastText}
+ */
+function text(_, node) {
+  return {type: 'text', value: node.value.toUpperCase()}
+}
