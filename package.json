@@ -1,6 +1,6 @@
 {
   "name": "remark-rehype",
-  "version": "11.1.0",
+  "version": "11.1.1",
   "description": "remark plugin that turns markdown into HTML to support rehype",
   "license": "MIT",
   "keywords": [
