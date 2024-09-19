@@ -575,17 +575,18 @@ The types of `mdast-util-to-hast` can be referenced to register data fields
 with `@types/mdast` and `Raw` nodes with `@types/hast`.
 
 ```js
-// Include `data` fields in mdast and `raw` nodes in hast.
-/// <reference types="mdast-util-to-hast" />
+/**
+ * @import {Root as HastRoot} from 'hast'
+ * @import {Root as MdastRoot} from 'mdast'
+ * @import {} from 'mdast-util-to-hast'
+ */
 
 import {visit} from 'unist-util-visit'
 
-/** @type {import('mdast').Root} */
-const mdastNode = {/* … */}
+const mdastNode = /** @type {MdastRoot} */ ({/* … */})
 console.log(mdastNode.data?.hName) // Typed as `string | undefined`.
 
-/** @type {import('hast').Root} */
-const hastNode = {/* … */}
+const hastNode = /** @type {HastRoot} */ ({/* … */})
 
 visit(hastNode, function (node) {
   // `node` can now be `raw`.
