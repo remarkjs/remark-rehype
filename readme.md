@@ -12,29 +12,29 @@
 
 ## Contents
 
-*   [What is this?](#what-is-this)
-*   [When should I use this?](#when-should-i-use-this)
-*   [Install](#install)
-*   [Use](#use)
-*   [API](#api)
-    *   [`defaultFootnoteBackContent(referenceIndex, rereferenceIndex)`](#defaultfootnotebackcontentreferenceindex-rereferenceindex)
-    *   [`defaultFootnoteBackLabel(referenceIndex, rereferenceIndex)`](#defaultfootnotebacklabelreferenceindex-rereferenceindex)
-    *   [`defaultHandlers`](#defaulthandlers)
-    *   [`unified().use(remarkRehype[, destination][, options])`](#unifieduseremarkrehype-destination-options)
-    *   [`Options`](#options)
-*   [Examples](#examples)
-    *   [Example: supporting HTML in markdown naïvely](#example-supporting-html-in-markdown-naïvely)
-    *   [Example: supporting HTML in markdown properly](#example-supporting-html-in-markdown-properly)
-    *   [Example: footnotes in languages other than English](#example-footnotes-in-languages-other-than-english)
-*   [HTML](#html-1)
-*   [CSS](#css)
-*   [Syntax tree](#syntax-tree)
-*   [Types](#types)
-*   [Compatibility](#compatibility)
-*   [Security](#security)
-*   [Related](#related)
-*   [Contribute](#contribute)
-*   [License](#license)
+* [What is this?](#what-is-this)
+* [When should I use this?](#when-should-i-use-this)
+* [Install](#install)
+* [Use](#use)
+* [API](#api)
+  * [`defaultFootnoteBackContent(referenceIndex, rereferenceIndex)`](#defaultfootnotebackcontentreferenceindex-rereferenceindex)
+  * [`defaultFootnoteBackLabel(referenceIndex, rereferenceIndex)`](#defaultfootnotebacklabelreferenceindex-rereferenceindex)
+  * [`defaultHandlers`](#defaulthandlers)
+  * [`unified().use(remarkRehype[, destination][, options])`](#unifieduseremarkrehype-destination-options)
+  * [`Options`](#options)
+* [Examples](#examples)
+  * [Example: supporting HTML in markdown naïvely](#example-supporting-html-in-markdown-naïvely)
+  * [Example: supporting HTML in markdown properly](#example-supporting-html-in-markdown-properly)
+  * [Example: footnotes in languages other than English](#example-footnotes-in-languages-other-than-english)
+* [HTML](#html-1)
+* [CSS](#css)
+* [Syntax tree](#syntax-tree)
+* [Types](#types)
+* [Compatibility](#compatibility)
+* [Security](#security)
+* [Related](#related)
+* [Contribute](#contribute)
+* [License](#license)
 
 ## What is this?
 
@@ -197,10 +197,10 @@ Turn markdown into HTML.
 
 ###### Parameters
 
-*   `destination` ([`Processor`][unified-processor], optional)
-    — processor
-*   `options` ([`Options`][api-options], optional)
-    — configuration
+* `destination` ([`Processor`][unified-processor], optional)
+  — processor
+* `options` ([`Options`][api-options], optional)
+  — configuration
 
 ###### Returns
 
@@ -210,11 +210,11 @@ Transform ([`Transformer`][unified-transformer]).
 
 ###### Signature
 
-*   if a [processor][unified-processor] is given, runs the (rehype) plugins
-    used on it with a hast tree, then discards the result
-    ([*bridge mode*][unified-mode])
-*   otherwise, returns a hast tree, the plugins used after `remarkRehype`
-    are rehype plugins ([*mutate mode*][unified-mode])
+* if a [processor][unified-processor] is given, runs the (rehype) plugins
+  used on it with a hast tree, then discards the result
+  ([*bridge mode*][unified-mode])
+* otherwise, returns a hast tree, the plugins used after `remarkRehype`
+  are rehype plugins ([*mutate mode*][unified-mode])
 
 > 👉 **Note**: It’s highly unlikely that you want to pass a `processor`.
 
@@ -224,14 +224,14 @@ Raw HTML is available in mdast as [`html`][mdast-html] nodes and can be embedded
 in hast as semistandard `raw` nodes.
 Most plugins ignore `raw` nodes but two notable ones don’t:
 
-*   [`rehype-stringify`][rehype-stringify] also has an option
-    `allowDangerousHtml` which will output the raw HTML.
-    This is typically discouraged as noted by the option name but is useful if
-    you completely trust authors
-*   [`rehype-raw`][rehype-raw] can handle the raw embedded HTML strings by
-    parsing them into standard hast nodes (`element`, `text`, etc).
-    This is a heavy task as it needs a full HTML parser, but it is the only way
-    to support untrusted content
+* [`rehype-stringify`][rehype-stringify] also has an option
+  `allowDangerousHtml` which will output the raw HTML.
+  This is typically discouraged as noted by the option name but is useful if
+  you completely trust authors
+* [`rehype-raw`][rehype-raw] can handle the raw embedded HTML strings by
+  parsing them into standard hast nodes (`element`, `text`, etc).
+  This is a heavy task as it needs a full HTML parser, but it is the only way
+  to support untrusted content
 
 ###### Footnotes
 
@@ -276,11 +276,11 @@ More information on how to handle clobbering and the prefix is explained in
 Unknown nodes are nodes with a type that isn’t in `handlers` or `passThrough`.
 The default behavior for unknown nodes is:
 
-*   when the node has a `value` (and doesn’t have `data.hName`,
-    `data.hProperties`, or `data.hChildren`, see later), create a hast `text`
-    node
-*   otherwise, create a `<div>` element (which could be changed with
-    `data.hName`), with its children mapped from mdast to hast as well
+* when the node has a `value` (and doesn’t have `data.hName`,
+  `data.hProperties`, or `data.hChildren`, see later), create a hast `text`
+  node
+* otherwise, create a `<div>` element (which could be changed with
+  `data.hName`), with its children mapped from mdast to hast as well
 
 This behavior can be changed by passing an `unknownHandler`.
 
@@ -290,44 +290,44 @@ Configuration (TypeScript type).
 
 ###### Fields
 
-*   `allowDangerousHtml` (`boolean`, default: `false`)
-    — whether to persist raw HTML in markdown in the hast tree
-*   `clobberPrefix` (`string`, default: `'user-content-'`)
-    — prefix to use before the `id` property on footnotes to prevent them from
-    *clobbering*
-*   `footnoteBackContent`
-    ([`FootnoteBackContentTemplate` from
-    `mdast-util-to-hast`][mdast-util-to-hast-footnote-back-content-template]
-    or `string`, default:
-    [`defaultFootnoteBackContent` from
-    `mdast-util-to-hast`][mdast-util-to-hast-default-footnote-back-content])
-    — content of the backreference back to references
-*   `footnoteBackLabel`
-    ([`FootnoteBackLabelTemplate` from
-    `mdast-util-to-hast`][mdast-util-to-hast-footnote-back-label-template]
-    or `string`, default:
-    [`defaultFootnoteBackLabel` from
-    `mdast-util-to-hast`][mdast-util-to-hast-default-footnote-back-label])
-    — label to describe the backreference back to references
-*   `footnoteLabel` (`string`, default: `'Footnotes'`)
-    — label to use for the footnotes section (affects screen readers)
-*   `footnoteLabelProperties`
-    ([`Properties` from `@types/hast`][hast-properties], default:
-    `{className: ['sr-only']}`)
-    — properties to use on the footnote label
-    (note that `id: 'footnote-label'` is always added as footnote calls use it
-    with `aria-describedby` to provide an accessible label)
-*   `footnoteLabelTagName` (`string`, default: `h2`)
-    — tag name to use for the footnote label
-*   `handlers` ([`Handlers` from
-    `mdast-util-to-hast`][mdast-util-to-hast-handlers], optional)
-    — extra handlers for nodes
-*   `passThrough` (`Array<Nodes['type']>`, optional)
-    — list of custom mdast node types to pass through (keep) in hast (note that
-    the node itself is passed, but eventual children are transformed)
-*   `unknownHandler` ([`Handler` from
-    `mdast-util-to-hast`][mdast-util-to-hast-handler], optional)
-    — handle all unknown nodes
+* `allowDangerousHtml` (`boolean`, default: `false`)
+  — whether to persist raw HTML in markdown in the hast tree
+* `clobberPrefix` (`string`, default: `'user-content-'`)
+  — prefix to use before the `id` property on footnotes to prevent them from
+  *clobbering*
+* `footnoteBackContent`
+  ([`FootnoteBackContentTemplate` from
+  `mdast-util-to-hast`][mdast-util-to-hast-footnote-back-content-template]
+  or `string`, default:
+  [`defaultFootnoteBackContent` from
+  `mdast-util-to-hast`][mdast-util-to-hast-default-footnote-back-content])
+  — content of the backreference back to references
+* `footnoteBackLabel`
+  ([`FootnoteBackLabelTemplate` from
+  `mdast-util-to-hast`][mdast-util-to-hast-footnote-back-label-template]
+  or `string`, default:
+  [`defaultFootnoteBackLabel` from
+  `mdast-util-to-hast`][mdast-util-to-hast-default-footnote-back-label])
+  — label to describe the backreference back to references
+* `footnoteLabel` (`string`, default: `'Footnotes'`)
+  — label to use for the footnotes section (affects screen readers)
+* `footnoteLabelProperties`
+  ([`Properties` from `@types/hast`][hast-properties], default:
+  `{className: ['sr-only']}`)
+  — properties to use on the footnote label
+  (note that `id: 'footnote-label'` is always added as footnote calls use it
+  with `aria-describedby` to provide an accessible label)
+* `footnoteLabelTagName` (`string`, default: `h2`)
+  — tag name to use for the footnote label
+* `handlers` ([`Handlers` from
+  `mdast-util-to-hast`][mdast-util-to-hast-handlers], optional)
+  — extra handlers for nodes
+* `passThrough` (`Array<Nodes['type']>`, optional)
+  — list of custom mdast node types to pass through (keep) in hast (note that
+  the node itself is passed, but eventual children are transformed)
+* `unknownHandler` ([`Handler` from
+  `mdast-util-to-hast`][mdast-util-to-hast-handler], optional)
+  — handle all unknown nodes
 
 ## Examples
 
@@ -617,16 +617,16 @@ Use [`rehype-sanitize`][rehype-sanitize] to make the tree safe.
 
 ## Related
 
-*   [`rehype-raw`][rehype-raw]
-    — rehype plugin to parse the tree again and support `raw` nodes
-*   [`rehype-sanitize`][rehype-sanitize]
-    — rehype plugin to sanitize HTML
-*   [`rehype-remark`](https://github.com/rehypejs/rehype-remark)
-    — rehype plugin to turn HTML into markdown
-*   [`rehype-retext`](https://github.com/rehypejs/rehype-retext)
-    — rehype plugin to support retext
-*   [`remark-retext`](https://github.com/remarkjs/remark-retext)
-    — remark plugin to support retext
+* [`rehype-raw`][rehype-raw]
+  — rehype plugin to parse the tree again and support `raw` nodes
+* [`rehype-sanitize`][rehype-sanitize]
+  — rehype plugin to sanitize HTML
+* [`rehype-remark`](https://github.com/rehypejs/rehype-remark)
+  — rehype plugin to turn HTML into markdown
+* [`rehype-retext`](https://github.com/rehypejs/rehype-retext)
+  — rehype plugin to support retext
+* [`remark-retext`](https://github.com/remarkjs/remark-retext)
+  — remark plugin to support retext
 
 ## Contribute
 

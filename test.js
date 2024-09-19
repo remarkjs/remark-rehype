@@ -92,14 +92,14 @@ test('remarkRehype', async function (t) {
     // @ts-expect-error: TS currently barfs on overloads that result in mutate/bridges.
     const treeOut = await unified().use(remarkRehype, unified()).run(treeIn)
     // @ts-expect-error: TS currently barfs on overloads that result in mutate/bridges.
-    const doc = unified().use(remarkStringify).stringify(treeOut)
-    assert.equal(doc, 'hi\n')
+    const document = unified().use(remarkStringify).stringify(treeOut)
+    assert.equal(document, 'hi\n')
   })
 
   await t.test('should understand mutate types', async function () {
     const treeIn = unified().use(remarkParse).parse('hi')
     const treeOut = await unified().use(remarkRehype).run(treeIn)
-    const doc = unified().use(rehypeStringify).stringify(treeOut)
-    assert.equal(doc, '<p>hi</p>')
+    const document = unified().use(rehypeStringify).stringify(treeOut)
+    assert.equal(document, '<p>hi</p>')
   })
 })
