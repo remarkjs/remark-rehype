@@ -68,11 +68,11 @@ test('remarkRehype', async function (t) {
   await t.test(
     'should mutate with `processor: undefined` and options',
     async function () {
+      // This tests the file set passed by `unified-engine`.
       assert.equal(
         String(
           await unified()
             .use(remarkParse)
-            // @ts-expect-error: this tests the file set passed by `unified-engine`.
             .use(remarkRehype, undefined, {handlers: {text}})
             .use(rehypeStringify)
             .process('# hi')
@@ -87,7 +87,6 @@ test('remarkRehype', async function (t) {
       String(
         await unified()
           .use(remarkParse)
-          // @ts-expect-error: TS currently barfs on overloads that result in mutate/bridges.
           .use(remarkRehype, unified())
           .use(remarkStringify)
           .process('## Hello, world! ##')
@@ -101,7 +100,6 @@ test('remarkRehype', async function (t) {
       String(
         await unified()
           .use(remarkParse)
-          // @ts-expect-error: TS currently barfs on overloads that result in mutate/bridges.
           .use(remarkRehype, unified(), {allowDangerousHtml: true})
           .use(remarkStringify)
           .process('## Hello, <i>world</i>! ##')
@@ -111,19 +109,18 @@ test('remarkRehype', async function (t) {
   })
 
   await t.test('should understand bridge types', async function () {
-    const treeIn = unified().use(remarkParse).parse('hi')
-    // @ts-expect-error: TS currently barfs on overloads that result in mutate/bridges.
+    const treeIn = unified().use(remarkParse).parse('# hi')
     const treeOut = await unified().use(remarkRehype, unified()).run(treeIn)
     // @ts-expect-error: TS currently barfs on overloads that result in mutate/bridges.
     const document = unified().use(remarkStringify).stringify(treeOut)
-    assert.equal(document, 'hi\n')
+    assert.equal(document, '# hi\n')
   })
 
   await t.test('should understand mutate types', async function () {
-    const treeIn = unified().use(remarkParse).parse('hi')
+    const treeIn = unified().use(remarkParse).parse('# hi')
     const treeOut = await unified().use(remarkRehype).run(treeIn)
     const document = unified().use(rehypeStringify).stringify(treeOut)
-    assert.equal(document, '<p>hi</p>')
+    assert.equal(document, '<h1>hi</h1>')
   })
 })
 
