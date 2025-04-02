@@ -1,14 +1,12 @@
 # remark-rehype
 
-[![Build][build-badge]][build]
-[![Coverage][coverage-badge]][coverage]
-[![Downloads][downloads-badge]][downloads]
-[![Size][size-badge]][size]
-[![Sponsors][sponsors-badge]][collective]
-[![Backers][backers-badge]][collective]
-[![Chat][chat-badge]][chat]
+[![Build][badge-build-image]][badge-build-url]
+[![Coverage][badge-coverage-image]][badge-coverage-url]
+[![Downloads][badge-downloads-image]][badge-downloads-url]
+[![Size][badge-size-image]][badge-size-url]
 
-**[remark][]** plugin that turns markdown into HTML to support **[rehype][]**.
+**[remark][github-remark]** plugin that turns markdown into HTML to support
+**[rehype][github-rehype]**.
 
 ## Contents
 
@@ -38,8 +36,9 @@
 
 ## What is this?
 
-This package is a [unified][] ([remark][]) plugin that switches from remark (the
-markdown ecosystem) to rehype (the HTML ecosystem).
+This package is a [unified][github-unified] ([remark][github-remark])
+plugin that switches from remark (the markdown ecosystem)
+to rehype (the HTML ecosystem).
 It does this by transforming the current markdown (mdast) syntax tree into an
 HTML (hast) syntax tree.
 remark plugins deal with mdast and rehype plugins deal with hast, so plugins
@@ -66,28 +65,30 @@ several remark and rehype plugins currently do.
 This project is useful when you want to turn markdown to HTML.
 It opens up a whole new ecosystem with tons of plugins to do all kinds of
 things.
-You can [minify HTML][rehype-minify], [format HTML][rehype-format],
-[make sure it’s safe][rehype-sanitize], [highlight code][rehype-highlight],
-[add metadata][rehype-meta], and a lot more.
+You can [minify HTML][github-rehype-minify],
+[format HTML][github-rehype-format],
+[make sure it’s safe][github-rehype-sanitize],
+[highlight code][github-rehype-highlight],
+[add metadata][github-rehype-meta], and a lot more.
 
-A different plugin, [`rehype-raw`][rehype-raw], adds support for raw HTML
+A different plugin, [`rehype-raw`][github-rehype-raw], adds support for raw HTML
 written inside markdown.
 This is a separate plugin because supporting HTML inside markdown is a heavy
 task (performance and bundle size) and not always needed.
 To use both together, you also have to configure `remark-rehype` with
 `allowDangerousHtml: true` and then use `rehype-raw`.
 
-The rehype plugin [`rehype-remark`][rehype-remark] does the inverse of this
-plugin.
+The rehype plugin [`rehype-remark`][github-rehype-remark] does the inverse of
+this plugin.
 It turns HTML into markdown.
 
 If you don’t use plugins and want to access syntax trees, you can use
-[`mdast-util-to-hast`][mdast-util-to-hast].
+[`mdast-util-to-hast`][github-mdast-util-to-hast].
 
 ## Install
 
-This package is [ESM only][esm].
-In Node.js (version 16+), install with [npm][]:
+This package is [ESM only][github-gist-esm].
+In Node.js (version 16+), install with [npm][npmjs-install]:
 
 ```sh
 npm install remark-rehype
@@ -145,7 +146,7 @@ console.log(String(file))
 
 …then running `node example.js` yields:
 
-```txt
+```text
 example.md: no issues found
 ```
 
@@ -179,17 +180,17 @@ The default export is [`remarkRehype`][api-remark-rehype].
 ### `defaultFootnoteBackContent(referenceIndex, rereferenceIndex)`
 
 See [`defaultFootnoteBackContent` from
-`mdast-util-to-hast`][mdast-util-to-hast-default-footnote-back-content]
+`mdast-util-to-hast`][github-mdast-util-to-hast-default-back-content]
 
 ### `defaultFootnoteBackLabel(referenceIndex, rereferenceIndex)`
 
 See [`defaultFootnoteBackLabel` from
-`mdast-util-to-hast`][mdast-util-to-hast-default-footnote-back-label]
+`mdast-util-to-hast`][github-mdast-util-to-hast-default-back-label].
 
 ### `defaultHandlers`
 
 See [`defaultHandlers` from
-`mdast-util-to-hast`][mdast-util-to-hast-default-handlers]
+`mdast-util-to-hast`][github-mdast-util-to-hast-default-handlers]
 
 ### `unified().use(remarkRehype[, destination][, options])`
 
@@ -197,38 +198,38 @@ Turn markdown into HTML.
 
 ###### Parameters
 
-* `destination` ([`Processor`][unified-processor], optional)
+* `destination` ([`Processor`][github-unified-processor], optional)
   — processor
 * `options` ([`Options`][api-options], optional)
   — configuration
 
 ###### Returns
 
-Transform ([`Transformer`][unified-transformer]).
+Transform ([`Transformer`][github-unified-transformer]).
 
 ##### Notes
 
 ###### Signature
 
-* if a [processor][unified-processor] is given, runs the (rehype) plugins
+* if a [processor][github-unified-processor] is given, runs the (rehype) plugins
   used on it with a hast tree, then discards the result
-  ([*bridge mode*][unified-mode])
+  ([*bridge mode*][github-unified-mode])
 * otherwise, returns a hast tree, the plugins used after `remarkRehype`
-  are rehype plugins ([*mutate mode*][unified-mode])
+  are rehype plugins ([*mutate mode*][github-unified-mode])
 
 > 👉 **Note**: It’s highly unlikely that you want to pass a `processor`.
 
 ###### HTML
 
-Raw HTML is available in mdast as [`html`][mdast-html] nodes and can be embedded
-in hast as semistandard `raw` nodes.
+Raw HTML is available in mdast as [`html`][github-mdast-html] nodes and can be
+embedded in hast as semistandard `raw` nodes.
 Most plugins ignore `raw` nodes but two notable ones don’t:
 
-* [`rehype-stringify`][rehype-stringify] also has an option
+* [`rehype-stringify`][github-rehype-stringify] also has an option
   `allowDangerousHtml` which will output the raw HTML.
   This is typically discouraged as noted by the option name but is useful if
   you completely trust authors
-* [`rehype-raw`][rehype-raw] can handle the raw embedded HTML strings by
+* [`rehype-raw`][github-rehype-raw] can handle the raw embedded HTML strings by
   parsing them into standard hast nodes (`element`, `text`, etc).
   This is a heavy task as it needs a full HTML parser, but it is the only way
   to support untrusted content
@@ -238,7 +239,7 @@ Most plugins ignore `raw` nodes but two notable ones don’t:
 Many options supported here relate to footnotes.
 Footnotes are not specified by CommonMark, which we follow by default.
 They are supported by GitHub, so footnotes can be enabled in markdown with
-[`remark-gfm`][remark-gfm].
+[`remark-gfm`][github-remark-gfm].
 
 The options `footnoteBackLabel` and `footnoteLabel` define natural language
 that explains footnotes, which is hidden for sighted users but shown to
@@ -269,7 +270,7 @@ Using a prefix solves this problem.
 
 More information on how to handle clobbering and the prefix is explained in
 [*Example: headings (DOM clobbering)* in
-`rehype-sanitize`][rehype-sanitize-clobber].
+`rehype-sanitize`][github-rehype-sanitize-clobber].
 
 ###### Unknown nodes
 
@@ -297,22 +298,22 @@ Configuration (TypeScript type).
   *clobbering*
 * `footnoteBackContent`
   ([`FootnoteBackContentTemplate` from
-  `mdast-util-to-hast`][mdast-util-to-hast-footnote-back-content-template]
+  `mdast-util-to-hast`][github-mdast-util-to-hast-back-content-template]
   or `string`, default:
   [`defaultFootnoteBackContent` from
-  `mdast-util-to-hast`][mdast-util-to-hast-default-footnote-back-content])
+  `mdast-util-to-hast`][github-mdast-util-to-hast-default-back-content])
   — content of the backreference back to references
 * `footnoteBackLabel`
   ([`FootnoteBackLabelTemplate` from
-  `mdast-util-to-hast`][mdast-util-to-hast-footnote-back-label-template]
+  `mdast-util-to-hast`][github-mdast-util-to-hast-back-label-template]
   or `string`, default:
   [`defaultFootnoteBackLabel` from
-  `mdast-util-to-hast`][mdast-util-to-hast-default-footnote-back-label])
+  `mdast-util-to-hast`][github-mdast-util-to-hast-default-back-label])
   — label to describe the backreference back to references
 * `footnoteLabel` (`string`, default: `'Footnotes'`)
   — label to use for the footnotes section (affects screen readers)
 * `footnoteLabelProperties`
-  ([`Properties` from `@types/hast`][hast-properties], default:
+  ([`Properties` from `@types/hast`][github-hast-properties], default:
   `{className: ['sr-only']}`)
   — properties to use on the footnote label
   (note that `id: 'footnote-label'` is always added as footnote calls use it
@@ -320,13 +321,13 @@ Configuration (TypeScript type).
 * `footnoteLabelTagName` (`string`, default: `h2`)
   — tag name to use for the footnote label
 * `handlers` ([`Handlers` from
-  `mdast-util-to-hast`][mdast-util-to-hast-handlers], optional)
+  `mdast-util-to-hast`][github-mdast-util-to-hast-handlers], optional)
   — extra handlers for nodes
 * `passThrough` (`Array<Nodes['type']>`, optional)
   — list of custom mdast node types to pass through (keep) in hast (note that
   the node itself is passed, but eventual children are transformed)
 * `unknownHandler` ([`Handler` from
-  `mdast-util-to-hast`][mdast-util-to-hast-handler], optional)
+  `mdast-util-to-hast`][github-mdast-util-to-hast-handler], optional)
   — handle all unknown nodes
 
 ## Examples
@@ -364,7 +365,7 @@ Yields:
 
 If you do not trust the authors of the input markdown, or if you want to make
 sure that rehype plugins can see HTML embedded in markdown, use
-[`rehype-raw`][rehype-raw].
+[`rehype-raw`][github-rehype-raw].
 The following example passes `allowDangerousHtml` to `remark-rehype`, then
 turns the raw embedded HTML into proper HTML nodes with `rehype-raw`, and
 finally sanitizes the HTML by only allowing safe things with
@@ -554,7 +555,8 @@ The following CSS is needed to make footnotes look a bit like GitHub:
 
 ## Syntax tree
 
-This projects turns [mdast][] (markdown) into [hast][] (HTML).
+This projects turns [mdast][github-mdast] (markdown) into [hast][github-hast]
+(HTML).
 
 It extends mdast by supporting `data` fields on mdast nodes to specify how they
 should be transformed.
@@ -610,19 +612,20 @@ version 5).
 ## Security
 
 Use of `remark-rehype` can open you up to a
-[cross-site scripting (XSS)][wiki-xss] attack.
-Embedded **[hast][]** properties (`hName`, `hProperties`, `hChildren`) in
-[mdast][], custom handlers, and the `allowDangerousHtml` option all provide
-openings.
-Use [`rehype-sanitize`][rehype-sanitize] to make the tree safe.
+[cross-site scripting (XSS)][wikipedia-xss] attack.
+Embedded **[hast][github-hast]** properties
+(`hName`, `hProperties`, `hChildren`)
+in [mdast][github-mdast], custom handlers, and the `allowDangerousHtml` option
+all provide openings.
+Use [`rehype-sanitize`][github-rehype-sanitize] to make the tree safe.
 
 ## Related
 
-* [`rehype-raw`][rehype-raw]
+* [`rehype-raw`][github-rehype-raw]
   — rehype plugin to parse the tree again and support `raw` nodes
-* [`rehype-sanitize`][rehype-sanitize]
+* [`rehype-sanitize`][github-rehype-sanitize]
   — rehype plugin to sanitize HTML
-* [`rehype-remark`](https://github.com/rehypejs/rehype-remark)
+* [`rehype-remark`][github-rehype-remark]
   — rehype plugin to turn HTML into markdown
 * [`rehype-retext`](https://github.com/rehypejs/rehype-retext)
   — rehype plugin to support retext
@@ -631,125 +634,19 @@ Use [`rehype-sanitize`][rehype-sanitize] to make the tree safe.
 
 ## Contribute
 
-See [`contributing.md`][contributing] in [`remarkjs/.github`][health] for ways
-to get started.
-See [`support.md`][support] for ways to get help.
+See [`contributing.md`][health-contributing] in [`remarkjs/.github`][health]
+for ways to get started.
+See [`support.md`][health-support] for ways to get help.
 
-This project has a [code of conduct][coc].
+This project has a [code of conduct][health-coc].
 By interacting with this repository, organization, or community you agree to
 abide by its terms.
 
 ## License
 
-[MIT][license] © [Titus Wormer][author]
+[MIT][file-license] © [Titus Wormer][wooorm]
 
 <!-- Definitions -->
-
-[build-badge]: https://github.com/remarkjs/remark-rehype/workflows/main/badge.svg
-
-[build]: https://github.com/remarkjs/remark-rehype/actions
-
-[coverage-badge]: https://img.shields.io/codecov/c/github/remarkjs/remark-rehype.svg
-
-[coverage]: https://codecov.io/github/remarkjs/remark-rehype
-
-[downloads-badge]: https://img.shields.io/npm/dm/remark-rehype.svg
-
-[downloads]: https://www.npmjs.com/package/remark-rehype
-
-[size-badge]: https://img.shields.io/bundlejs/size/remark-rehype
-
-[size]: https://bundlejs.com/?q=remark-rehype
-
-[sponsors-badge]: https://opencollective.com/unified/sponsors/badge.svg
-
-[backers-badge]: https://opencollective.com/unified/backers/badge.svg
-
-[collective]: https://opencollective.com/unified
-
-[chat-badge]: https://img.shields.io/badge/chat-discussions-success.svg
-
-[chat]: https://github.com/remarkjs/remark/discussions
-
-[npm]: https://docs.npmjs.com/cli/install
-
-[esm]: https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c
-
-[esmsh]: https://esm.sh
-
-[health]: https://github.com/remarkjs/.github
-
-[contributing]: https://github.com/remarkjs/.github/blob/main/contributing.md
-
-[support]: https://github.com/remarkjs/.github/blob/main/support.md
-
-[coc]: https://github.com/remarkjs/.github/blob/main/code-of-conduct.md
-
-[license]: license
-
-[author]: https://wooorm.com
-
-[github-markdown-css]: https://github.com/sindresorhus/github-markdown-css
-
-[hast]: https://github.com/syntax-tree/hast
-
-[hast-properties]: https://github.com/syntax-tree/hast#properties
-
-[mdast]: https://github.com/syntax-tree/mdast
-
-[mdast-html]: https://github.com/syntax-tree/mdast#html
-
-[mdast-util-to-hast]: https://github.com/syntax-tree/mdast-util-to-hast
-
-[mdast-util-to-hast-default-footnote-back-content]: https://github.com/syntax-tree/mdast-util-to-hast#defaultfootnotebackcontentreferenceindex-rereferenceindex
-
-[mdast-util-to-hast-default-footnote-back-label]: https://github.com/syntax-tree/mdast-util-to-hast#defaultfootnotebacklabelreferenceindex-rereferenceindex
-
-[mdast-util-to-hast-footnote-back-content-template]: https://github.com/syntax-tree/mdast-util-to-hast#footnotebackcontenttemplate
-
-[mdast-util-to-hast-footnote-back-label-template]: https://github.com/syntax-tree/mdast-util-to-hast#footnotebacklabeltemplate
-
-[mdast-util-to-hast-default-handlers]: https://github.com/syntax-tree/mdast-util-to-hast#defaulthandlers
-
-[mdast-util-to-hast-handlers]: https://github.com/syntax-tree/mdast-util-to-hast#handlers
-
-[mdast-util-to-hast-handler]: https://github.com/syntax-tree/mdast-util-to-hast#handler
-
-[rehype]: https://github.com/rehypejs/rehype
-
-[rehype-format]: https://github.com/rehypejs/rehype-format
-
-[rehype-highlight]: https://github.com/rehypejs/rehype-highlight
-
-[rehype-meta]: https://github.com/rehypejs/rehype-meta
-
-[rehype-minify]: https://github.com/rehypejs/rehype-minify
-
-[rehype-raw]: https://github.com/rehypejs/rehype-raw
-
-[rehype-sanitize]: https://github.com/rehypejs/rehype-sanitize
-
-[rehype-sanitize-clobber]: https://github.com/rehypejs/rehype-sanitize#example-headings-dom-clobbering
-
-[rehype-stringify]: https://github.com/rehypejs/rehype/tree/main/packages/rehype-stringify
-
-[rehype-remark]: https://github.com/rehypejs/rehype-remark
-
-[remark]: https://github.com/remarkjs/remark
-
-[remark-gfm]: https://github.com/remarkjs/remark-gfm
-
-[typescript]: https://www.typescriptlang.org
-
-[unified]: https://github.com/unifiedjs/unified
-
-[unified-mode]: https://github.com/unifiedjs/unified#transforming-between-ecosystems
-
-[unified-processor]: https://github.com/unifiedjs/unified#processor
-
-[unified-transformer]: https://github.com/unifiedjs/unified#transformer
-
-[wiki-xss]: https://en.wikipedia.org/wiki/Cross-site_scripting
 
 [api-default-footnote-back-content]: #defaultfootnotebackcontentreferenceindex-rereferenceindex
 
@@ -760,3 +657,99 @@ abide by its terms.
 [api-options]: #options
 
 [api-remark-rehype]: #unifieduseremarkrehype-destination-options
+
+[badge-build-image]: https://github.com/remarkjs/remark-rehype/workflows/main/badge.svg
+
+[badge-build-url]: https://github.com/remarkjs/remark-rehype/actions
+
+[badge-coverage-image]: https://img.shields.io/codecov/c/github/remarkjs/remark-rehype.svg
+
+[badge-coverage-url]: https://codecov.io/github/remarkjs/remark-rehype
+
+[badge-downloads-image]: https://img.shields.io/npm/dm/remark-rehype.svg
+
+[badge-downloads-url]: https://www.npmjs.com/package/remark-rehype
+
+[badge-size-image]: https://img.shields.io/bundlejs/size/remark-rehype
+
+[badge-size-url]: https://bundlejs.com/?q=remark-rehype
+
+[esmsh]: https://esm.sh
+
+[file-license]: license
+
+[github-gist-esm]: https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c
+
+[github-hast]: https://github.com/syntax-tree/hast
+
+[github-hast-properties]: https://github.com/syntax-tree/hast#properties
+
+[github-markdown-css]: https://github.com/sindresorhus/github-markdown-css
+
+[github-mdast]: https://github.com/syntax-tree/mdast
+
+[github-mdast-html]: https://github.com/syntax-tree/mdast#html
+
+[github-mdast-util-to-hast]: https://github.com/syntax-tree/mdast-util-to-hast
+
+[github-mdast-util-to-hast-back-content-template]: https://github.com/syntax-tree/mdast-util-to-hast#footnotebackcontenttemplate
+
+[github-mdast-util-to-hast-back-label-template]: https://github.com/syntax-tree/mdast-util-to-hast#footnotebacklabeltemplate
+
+[github-mdast-util-to-hast-default-back-content]: https://github.com/syntax-tree/mdast-util-to-hast#defaultfootnotebackcontentreferenceindex-rereferenceindex
+
+[github-mdast-util-to-hast-default-back-label]: https://github.com/syntax-tree/mdast-util-to-hast#defaultfootnotebacklabelreferenceindex-rereferenceindex
+
+[github-mdast-util-to-hast-default-handlers]: https://github.com/syntax-tree/mdast-util-to-hast#defaulthandlers
+
+[github-mdast-util-to-hast-handler]: https://github.com/syntax-tree/mdast-util-to-hast#handler
+
+[github-mdast-util-to-hast-handlers]: https://github.com/syntax-tree/mdast-util-to-hast#handlers
+
+[github-rehype]: https://github.com/rehypejs/rehype
+
+[github-rehype-format]: https://github.com/rehypejs/rehype-format
+
+[github-rehype-highlight]: https://github.com/rehypejs/rehype-highlight
+
+[github-rehype-meta]: https://github.com/rehypejs/rehype-meta
+
+[github-rehype-minify]: https://github.com/rehypejs/rehype-minify
+
+[github-rehype-raw]: https://github.com/rehypejs/rehype-raw
+
+[github-rehype-remark]: https://github.com/rehypejs/rehype-remark
+
+[github-rehype-sanitize]: https://github.com/rehypejs/rehype-sanitize
+
+[github-rehype-sanitize-clobber]: https://github.com/rehypejs/rehype-sanitize#example-headings-dom-clobbering
+
+[github-rehype-stringify]: https://github.com/rehypejs/rehype/tree/main/packages/rehype-stringify
+
+[github-remark]: https://github.com/remarkjs/remark
+
+[github-remark-gfm]: https://github.com/remarkjs/remark-gfm
+
+[github-unified]: https://github.com/unifiedjs/unified
+
+[github-unified-mode]: https://github.com/unifiedjs/unified#transforming-between-ecosystems
+
+[github-unified-processor]: https://github.com/unifiedjs/unified#processor
+
+[github-unified-transformer]: https://github.com/unifiedjs/unified#transformer
+
+[health]: https://github.com/remarkjs/.github
+
+[health-coc]: https://github.com/remarkjs/.github/blob/main/code-of-conduct.md
+
+[health-contributing]: https://github.com/remarkjs/.github/blob/main/contributing.md
+
+[health-support]: https://github.com/remarkjs/.github/blob/main/support.md
+
+[npmjs-install]: https://docs.npmjs.com/cli/install
+
+[typescript]: https://www.typescriptlang.org
+
+[wikipedia-xss]: https://en.wikipedia.org/wiki/Cross-site_scripting
+
+[wooorm]: https://wooorm.com
