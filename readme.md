@@ -41,24 +41,31 @@ plugin that switches from remark (the markdown ecosystem)
 to rehype (the HTML ecosystem).
 It does this by transforming the current markdown (mdast) syntax tree into an
 HTML (hast) syntax tree.
-remark plugins deal with mdast and rehype plugins deal with hast, so plugins
-used after `remark-rehype` have to be rehype plugins.
+remark plugins deal with mdast and rehype plugins deal with hast,
+so plugins used after `remark-rehype` have to be rehype plugins.
 
 The reason that there are different ecosystems for markdown and HTML is that
-turning markdown into HTML is, while frequently needed, not the only purpose of
-markdown.
+turning markdown into HTML is,
+while frequently needed,
+not the only purpose of markdown.
 Checking (linting) and formatting markdown are also common use cases for
 remark and markdown.
 There are several aspects of markdown that do not translate 1-to-1 to HTML.
-In some cases markdown contains more information than HTML: for example, there
-are several ways to add a link in markdown (as in, autolinks: `<https://url>`,
-resource links: `[label](url)`, and reference links with definitions:
+In some cases markdown contains more information than HTML:
+for example,
+there are several ways to add a link in markdown
+(as in,
+autolinks: `<https://url>`,
+resource links: `[label](url)`,
+and reference links with definitions:
 `[label][id]` and `[id]: url`).
-In other cases HTML contains more information than markdown: there are many
-tags, which add new meaning (semantics), available in HTML that aren’t available
-in markdown.
-If there was just one AST, it would be quite hard to perform the tasks that
-several remark and rehype plugins currently do.
+In other cases HTML contains more information than markdown:
+there are many tags,
+which add new meaning (semantics),
+available in HTML that aren’t available in markdown.
+If there was just one AST,
+it would be quite hard to perform the tasks that several remark and rehype
+plugins currently do.
 
 ## When should I use this?
 
@@ -68,27 +75,32 @@ things.
 You can [minify HTML][github-rehype-minify],
 [format HTML][github-rehype-format],
 [make sure it’s safe][github-rehype-sanitize],
-[highlight code][github-rehype-highlight],
-[add metadata][github-rehype-meta], and a lot more.
+[highlight code][github-rehype-starry-night],
+[add metadata][github-rehype-meta],
+and a lot more.
 
-A different plugin, [`rehype-raw`][github-rehype-raw], adds support for raw HTML
-written inside markdown.
+A different plugin,
+[`rehype-raw`][github-rehype-raw],
+adds support for raw HTML written inside markdown.
 This is a separate plugin because supporting HTML inside markdown is a heavy
 task (performance and bundle size) and not always needed.
-To use both together, you also have to configure `remark-rehype` with
-`allowDangerousHtml: true` and then use `rehype-raw`.
+To use both together,
+you also have to configure `remark-rehype` with `allowDangerousHtml: true` and
+then use `rehype-raw`.
 
 The rehype plugin [`rehype-remark`][github-rehype-remark] does the inverse of
 this plugin.
 It turns HTML into markdown.
 
-If you don’t use plugins and want to access syntax trees, you can use
+If you don’t use plugins and want to access syntax trees,
+you can use
 [`mdast-util-to-hast`][github-mdast-util-to-hast].
 
 ## Install
 
 This package is [ESM only][github-gist-esm].
-In Node.js (version 16+), install with [npm][npmjs-install]:
+In Node.js (version 16+),
+install with [npm][npmjs-install]:
 
 ```sh
 npm install remark-rehype
@@ -173,14 +185,15 @@ example.md: no issues found
 
 This package exports the identifiers
 [`defaultFootnoteBackContent`][api-default-footnote-back-content],
-[`defaultFootnoteBackLabel`][api-default-footnote-back-label], and
+[`defaultFootnoteBackLabel`][api-default-footnote-back-label],
+and
 [`defaultHandlers`][api-default-handlers].
 The default export is [`remarkRehype`][api-remark-rehype].
 
 ### `defaultFootnoteBackContent(referenceIndex, rereferenceIndex)`
 
 See [`defaultFootnoteBackContent` from
-`mdast-util-to-hast`][github-mdast-util-to-hast-default-back-content]
+`mdast-util-to-hast`][github-mdast-util-to-hast-default-back-content].
 
 ### `defaultFootnoteBackLabel(referenceIndex, rereferenceIndex)`
 
@@ -190,7 +203,7 @@ See [`defaultFootnoteBackLabel` from
 ### `defaultHandlers`
 
 See [`defaultHandlers` from
-`mdast-util-to-hast`][github-mdast-util-to-hast-default-handlers]
+`mdast-util-to-hast`][github-mdast-util-to-hast-default-handlers].
 
 ### `unified().use(remarkRehype[, destination][, options])`
 
@@ -198,9 +211,11 @@ Turn markdown into HTML.
 
 ###### Parameters
 
-* `destination` ([`Processor`][github-unified-processor], optional)
+* `destination`
+  ([`Processor`][github-unified-processor], optional)
   — processor
-* `options` ([`Options`][api-options], optional)
+* `options`
+  ([`Options`][api-options], optional)
   — configuration
 
 ###### Returns
@@ -211,13 +226,17 @@ Transform ([`Transformer`][github-unified-transformer]).
 
 ###### Signature
 
-* if a [processor][github-unified-processor] is given, runs the (rehype) plugins
-  used on it with a hast tree, then discards the result
+* if a [processor][github-unified-processor] is given,
+  runs the (rehype) plugins used on it with a hast tree,
+  then discards the result
   ([*bridge mode*][github-unified-mode])
-* otherwise, returns a hast tree, the plugins used after `remarkRehype`
-  are rehype plugins ([*mutate mode*][github-unified-mode])
+* otherwise,
+  returns a hast tree,
+  the plugins used after `remarkRehype` are rehype plugins
+  ([*mutate mode*][github-unified-mode])
 
-> 👉 **Note**: It’s highly unlikely that you want to pass a `processor`.
+> 👉 **Note**:
+> it’s highly unlikely that you want to pass a `processor`.
 
 ###### HTML
 
@@ -226,35 +245,40 @@ embedded in hast as semistandard `raw` nodes.
 Most plugins ignore `raw` nodes but two notable ones don’t:
 
 * [`rehype-stringify`][github-rehype-stringify] also has an option
-  `allowDangerousHtml` which will output the raw HTML.
-  This is typically discouraged as noted by the option name but is useful if
+  `allowDangerousHtml` which will output the raw HTML;
+  this is typically discouraged as noted by the option name but is useful if
   you completely trust authors
 * [`rehype-raw`][github-rehype-raw] can handle the raw embedded HTML strings by
-  parsing them into standard hast nodes (`element`, `text`, etc).
-  This is a heavy task as it needs a full HTML parser, but it is the only way
-  to support untrusted content
+  parsing them into standard hast nodes
+  (`element`, `text`, etc);
+  This is a heavy task as it needs a full HTML parser,
+  but it is the only way to support untrusted content
 
 ###### Footnotes
 
 Many options supported here relate to footnotes.
-Footnotes are not specified by CommonMark, which we follow by default.
-They are supported by GitHub, so footnotes can be enabled in markdown with
-[`remark-gfm`][github-remark-gfm].
+Footnotes are not specified by CommonMark,
+which we follow by default.
+They are supported by GitHub,
+so footnotes can be enabled in markdown with [`remark-gfm`][github-remark-gfm].
 
 The options `footnoteBackLabel` and `footnoteLabel` define natural language
-that explains footnotes, which is hidden for sighted users but shown to
-assistive technology.
-When your page is not in English, you must define translated values.
+that explains footnotes,
+which is hidden for sighted users but shown to assistive technology.
+When your page is not in English,
+you must define translated values.
 
-Back references use ARIA attributes, but the section label itself uses a
-heading that is hidden with an `sr-only` class.
-To show it to sighted users, define different attributes in
-`footnoteLabelProperties`.
+Back references use ARIA attributes,
+but the section label itself uses a heading that is hidden with an
+`sr-only` class.
+To show it to sighted users,
+define different attributes in `footnoteLabelProperties`.
 
 ###### Clobbering
 
-Footnotes introduces a problem, as it links footnote calls to footnote
-definitions on the page through `id` attributes generated from user content,
+Footnotes introduces a problem,
+as it links footnote calls to footnote definitions on the page through `id`
+attributes generated from user content,
 which results in DOM clobbering.
 
 DOM clobbering is this:
@@ -277,11 +301,14 @@ More information on how to handle clobbering and the prefix is explained in
 Unknown nodes are nodes with a type that isn’t in `handlers` or `passThrough`.
 The default behavior for unknown nodes is:
 
-* when the node has a `value` (and doesn’t have `data.hName`,
-  `data.hProperties`, or `data.hChildren`, see later), create a hast `text`
-  node
-* otherwise, create a `<div>` element (which could be changed with
-  `data.hName`), with its children mapped from mdast to hast as well
+* when the node has a `value`
+  (and doesn’t have `data.hName`, `data.hProperties`, or `data.hChildren`,
+  see later),
+  create a hast `text` node
+* otherwise,
+  create a `<div>` element
+  (which could be changed with `data.hName`),
+  with its children mapped from mdast to hast as well
 
 This behavior can be changed by passing an `unknownHandler`.
 
@@ -291,9 +318,11 @@ Configuration (TypeScript type).
 
 ###### Fields
 
-* `allowDangerousHtml` (`boolean`, default: `false`)
+* `allowDangerousHtml`
+  (`boolean`, default: `false`)
   — whether to persist raw HTML in markdown in the hast tree
-* `clobberPrefix` (`string`, default: `'user-content-'`)
+* `clobberPrefix`
+  (`string`, default: `'user-content-'`)
   — prefix to use before the `id` property on footnotes to prevent them from
   *clobbering*
 * `footnoteBackContent`
@@ -310,7 +339,8 @@ Configuration (TypeScript type).
   [`defaultFootnoteBackLabel` from
   `mdast-util-to-hast`][github-mdast-util-to-hast-default-back-label])
   — label to describe the backreference back to references
-* `footnoteLabel` (`string`, default: `'Footnotes'`)
+* `footnoteLabel`
+  (`string`, default: `'Footnotes'`)
   — label to use for the footnotes section (affects screen readers)
 * `footnoteLabelProperties`
   ([`Properties` from `@types/hast`][github-hast-properties], default:
@@ -318,15 +348,19 @@ Configuration (TypeScript type).
   — properties to use on the footnote label
   (note that `id: 'footnote-label'` is always added as footnote calls use it
   with `aria-describedby` to provide an accessible label)
-* `footnoteLabelTagName` (`string`, default: `h2`)
+* `footnoteLabelTagName`
+  (`string`, default: `h2`)
   — tag name to use for the footnote label
-* `handlers` ([`Handlers` from
+* `handlers`
+  ([`Handlers` from
   `mdast-util-to-hast`][github-mdast-util-to-hast-handlers], optional)
   — extra handlers for nodes
-* `passThrough` (`Array<Nodes['type']>`, optional)
+* `passThrough`
+  (`Array<Nodes['type']>`, optional)
   — list of custom mdast node types to pass through (keep) in hast (note that
   the node itself is passed, but eventual children are transformed)
-* `unknownHandler` ([`Handler` from
+* `unknownHandler`
+  ([`Handler` from
   `mdast-util-to-hast`][github-mdast-util-to-hast-handler], optional)
   — handle all unknown nodes
 
@@ -335,8 +369,8 @@ Configuration (TypeScript type).
 ### Example: supporting HTML in markdown naïvely
 
 If you completely trust the authors of the input markdown and want to allow them
-to write HTML inside markdown, you can pass `allowDangerousHtml` to
-`remark-rehype` and `rehype-stringify`:
+to write HTML inside markdown,
+you can pass `allowDangerousHtml` to `remark-rehype` and `rehype-stringify`:
 
 ```js
 import rehypeStringify from 'rehype-stringify'
@@ -359,16 +393,18 @@ Yields:
 <p><a href="/wiki/Dysnomia_(moon)" onclick="alert(1)">Dysnomia</a></p>
 ```
 
-> ⚠️ **Danger**: observe that the XSS attack through `onclick` is present.
+> ⚠️ **Danger**:
+> observe that the XSS attack through `onclick` is present.
 
 ### Example: supporting HTML in markdown properly
 
-If you do not trust the authors of the input markdown, or if you want to make
-sure that rehype plugins can see HTML embedded in markdown, use
-[`rehype-raw`][github-rehype-raw].
-The following example passes `allowDangerousHtml` to `remark-rehype`, then
-turns the raw embedded HTML into proper HTML nodes with `rehype-raw`, and
-finally sanitizes the HTML by only allowing safe things with
+If you do not trust the authors of the input markdown,
+or if you want to make sure that rehype plugins can see HTML embedded in
+markdown,
+use [`rehype-raw`][github-rehype-raw].
+The following example passes `allowDangerousHtml` to `remark-rehype`,
+then turns the raw embedded HTML into proper HTML nodes with `rehype-raw`,
+and finally sanitizes the HTML by only allowing safe things with
 `rehype-sanitize`:
 
 ```js
@@ -396,15 +432,15 @@ Running that code yields:
 <p><a href="/wiki/Dysnomia_(moon)">Dysnomia</a></p>
 ```
 
-> ⚠️ **Danger**: observe that the XSS attack through `onclick` is **not**
-> present.
+> ⚠️ **Danger**:
+> observe that the XSS attack through `onclick` is **not** present.
 
 ### Example: footnotes in languages other than English
 
 If you know that the markdown is authored in a language other than English,
-and you’re using `remark-gfm` to match how GitHub renders markdown, and you know
-that footnotes are (or can?) be used, you should translate the labels associated
-with them.
+and you’re using `remark-gfm` to match how GitHub renders markdown,
+and you know that footnotes are (or can?) be used,
+you should translate the labels associated with them.
 
 Let’s first set the stage:
 
@@ -454,11 +490,12 @@ abgerufen am 19. Januar 2022 (englisch). <a href="#user-content-fnref-nasa-2015"
 </section>
 ```
 
-This is a mix of English and German that isn’t very accessible, such as that
-screen readers can’t handle it nicely.
+This is a mix of English and German that isn’t very accessible,
+such as that screen readers can’t handle it nicely.
 Let’s say our program *does* know that the markdown is in German.
-In that case, it’s important to translate and define the labels relating to
-footnotes so that screen reader users can properly pronounce the page:
+In that case,
+it’s important to translate and define the labels relating to footnotes so that
+screen reader users can properly pronounce the page:
 
 ```diff
 @@ -18,7 +18,16 @@ ihr astronomisches Symbol ist daher eine stilisierte Sichel: ⚳.[^nasa-2015]
@@ -480,7 +517,8 @@ footnotes so that screen reader users can properly pronounce the page:
    .process(doc)
 ```
 
-Running the code with the above patch applied, yields:
+Running the code with the above patch applied,
+yields:
 
 ```diff
 @@ -1,13 +1,13 @@
@@ -509,17 +547,21 @@ for info on how mdast (markdown) nodes are transformed to hast (HTML).
 
 ## CSS
 
-Assuming you know how to use (semantic) HTML and CSS, then it should generally
-be straightforward to style the HTML produced by this plugin.
-With CSS, you can get creative and style the results as you please.
+Assuming you know how to use (semantic) HTML and CSS,
+then it should generally be straightforward to style the HTML produced by this
+plugin.
+With CSS,
+you can get creative and style the results as you please.
 
-Some semistandard features, notably GFMs tasklists and footnotes, generate HTML
-that be unintuitive, as it matches exactly what GitHub produces for their
-website.
-There is a project, [`sindresorhus/github-markdown-css`][github-markdown-css],
-that exposes the stylesheet that GitHub uses for rendered markdown, which might
-either be inspirational for more complex features, or can be used as-is to
-exactly match how GitHub styles rendered markdown.
+Some semistandard features,
+notably GFMs tasklists and footnotes,
+generate HTML that be unintuitive,
+as it matches exactly what GitHub produces for their website.
+There is a project,
+[`sindresorhus/github-markdown-css`][github-markdown-css],
+that exposes the stylesheet that GitHub uses for rendered markdown,
+which might either be inspirational for more complex features,
+or can be used as-is to exactly match how GitHub styles rendered markdown.
 
 The following CSS is needed to make footnotes look a bit like GitHub:
 
@@ -600,14 +642,17 @@ visit(hastNode, function (node) {
 Projects maintained by the unified collective are compatible with maintained
 versions of Node.js.
 
-When we cut a new major release, we drop support for unmaintained versions of
-Node.
-This means we try to keep the current release line, `remark-rehype@^11`,
+When we cut a new major release,
+we drop support for unmaintained versions of Node.
+This means we try to keep the current release line,
+`remark-rehype@11`,
 compatible with Node.js 16.
 
-This plugin works with `unified` version 6+, `remark-parse` version 3+ (used in
-`remark` version 7), and `rehype-stringify` version 3+ (used in `rehype`
-version 5).
+This plugin works with `unified` version 6+,
+`remark-parse` version 3+
+(used in `remark` version 7),
+and `rehype-stringify` version 3+
+(used in `rehype` version 5).
 
 ## Security
 
@@ -615,8 +660,9 @@ Use of `remark-rehype` can open you up to a
 [cross-site scripting (XSS)][wikipedia-xss] attack.
 Embedded **[hast][github-hast]** properties
 (`hName`, `hProperties`, `hChildren`)
-in [mdast][github-mdast], custom handlers, and the `allowDangerousHtml` option
-all provide openings.
+in [mdast][github-mdast],
+custom handlers,
+and the `allowDangerousHtml` option all provide openings.
 Use [`rehype-sanitize`][github-rehype-sanitize] to make the tree safe.
 
 ## Related
@@ -639,8 +685,9 @@ for ways to get started.
 See [`support.md`][health-support] for ways to get help.
 
 This project has a [code of conduct][health-coc].
-By interacting with this repository, organization, or community you agree to
-abide by its terms.
+By interacting with this repository,
+organization,
+or community you agree to abide by its terms.
 
 ## License
 
@@ -710,8 +757,6 @@ abide by its terms.
 
 [github-rehype-format]: https://github.com/rehypejs/rehype-format
 
-[github-rehype-highlight]: https://github.com/rehypejs/rehype-highlight
-
 [github-rehype-meta]: https://github.com/rehypejs/rehype-meta
 
 [github-rehype-minify]: https://github.com/rehypejs/rehype-minify
@@ -723,6 +768,8 @@ abide by its terms.
 [github-rehype-sanitize]: https://github.com/rehypejs/rehype-sanitize
 
 [github-rehype-sanitize-clobber]: https://github.com/rehypejs/rehype-sanitize#example-headings-dom-clobbering
+
+[github-rehype-starry-night]: https://github.com/rehypejs/rehype-starry-night
 
 [github-rehype-stringify]: https://github.com/rehypejs/rehype/tree/main/packages/rehype-stringify
 
